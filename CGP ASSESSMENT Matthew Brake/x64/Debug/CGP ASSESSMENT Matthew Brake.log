@@ -1,0 +1,16 @@
+﻿  Tank.cpp
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(33,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(39,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(45,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(52,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(57,9): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(62,9): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(68,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(69,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(70,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(70,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(70,38): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(70,38): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(97,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(98,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\Matth\Documents\YEAR 2\CGP\NewCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe
