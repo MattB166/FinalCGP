@@ -18,6 +18,8 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 	m_h = 35;
 	m_x = 50;
 	m_y = 50;
+	boxCollider.x = m_x;
+	boxCollider.y = m_y;
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
 	/////need to set min and max x and y values for collision function 
@@ -27,28 +29,32 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 
 
 
-int Tank::MoveUp()
+int Tank::MoveUp(float deltaTime)
 {
-	--m_y;
+	m_y -= m_speed * deltaTime;
+	boxCollider.y = m_y;
 	return m_y;
 }
 
-int Tank::MoveDown()
+int Tank::MoveDown(float deltaTime)
 {
-	++m_y;
+	m_y += m_speed * deltaTime;
+	boxCollider.y = m_y;
 	return m_y;
 }
 
-int Tank::MoveLeft()
+int Tank::MoveLeft(float deltaTime)
 {
-	--m_x;
+	m_x -= m_speed * deltaTime;
+	boxCollider.x = m_x;
 	return m_x;
 }
 
 
-int Tank::MoveRight()
+int Tank::MoveRight(float deltaTime)
 {
-	++m_x;
+	m_x += m_speed * deltaTime;
+	boxCollider.x = m_x;
 	return m_x; 
 }
 

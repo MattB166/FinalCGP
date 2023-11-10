@@ -11,10 +11,10 @@ class Tank : public GameObject
 public:
 	Tank();
 	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture);
-	int MoveUp();
-	int MoveDown();
-	int MoveLeft();
-	int MoveRight();
+	int MoveUp(float deltaTime);
+	int MoveDown(float deltaTime);
+	int MoveLeft(float deltaTime);
+	int MoveRight(float deltaTime);
 	int GetXValue()const;
 	int GetYValue()const;
 	void Draw(SDL_Renderer* renderer) override;
@@ -24,9 +24,11 @@ public:
 	
 private:
 	
+	//BoxCollider enemyCollider; 
 	SDL_Texture* m_barrelTexture; 
 	Controller TankType;
 	int tankID;
+	float m_speed = 13; 
 	
 
 	

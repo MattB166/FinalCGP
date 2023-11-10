@@ -140,6 +140,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="EnemyTankSpawner.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TimeMaths.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h" />
@@ -148,6 +150,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="EnemyTankSpawner.h" />
+    <ClInclude Include="TimeMaths.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

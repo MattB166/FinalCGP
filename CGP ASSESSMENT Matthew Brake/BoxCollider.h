@@ -10,6 +10,6 @@ public:
 	float max_x;
 	float min_y;
 	float max_y;*/
-
+	
 };
 

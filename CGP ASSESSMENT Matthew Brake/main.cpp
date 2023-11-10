@@ -9,6 +9,7 @@
 #include "Collision.h"
 #include "Collider.h"
 #include "BoxCollider.h"
+#include "TimeMaths.h"
 
 
 
@@ -166,14 +167,7 @@ int main(int argc, char* argv[])
 	}
 	SDL_FreeSurface(textSurface);
 
-	////load door as a surface
-	//SDL_Surface* image = SDL_LoadBMP("Assets/door.bmp");
-	//////error checking
-	//if (image == nullptr)
-	//{
-	//	std::cout << "Failed to load image" << SDL_GetError();
-	//}
-
+	
 	
 
 	SDL_Texture* TankTexture = LoadTexture("Assets/PNG/Tanks/tankGreen.png");
@@ -182,23 +176,21 @@ int main(int argc, char* argv[])
 	SDL_Texture* EnemyTankTexture = LoadTexture("Assets/PNG/Tanks/tankRed.png");
 	SDL_Texture* enemyBarrelTexture = LoadTexture("Assets/PNG/Tanks/barrelRed.png");
 
-	int tankWidth = 40;
+	/*int tankWidth = 40;
 	int tankHeight = 35;
 
 	int barrelWidth = 8;
 	int barrelHeight = 25;
 
 	int TankX = 200;
-	int TankY = 200;
+	int TankY = 200;*/
 
-	//Tank MyTank(g_sdlRenderer, TankTexture, TankX, TankY);
+	
 
 	Tank PlayerTank(TankTexture,BarrelTexture);
 	
 
-	/*TankSpawner enemytanks(TankTexture, BarrelTexture);
-
-	enemytanks.SpawnTank(4);*/
+	
 
 	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture);
 
@@ -207,7 +199,7 @@ int main(int argc, char* argv[])
 	
 	
 	
-	
+	Tank* firstTank = enemyTanks->getTankByIndex(0);
 	
 	//if (Collision::CircleCollision(2, 3, 1, 3, 2, 0.5f))   //testing circle collision 
 	//{
@@ -218,7 +210,8 @@ int main(int argc, char* argv[])
 	{
 		std::cout << "Clash" << std::endl; 
 		std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
-		std::cout << enemyTanks->enemyCollider.x << " , " << enemyTanks->enemyCollider.y << std::endl; 
+		std::cout << enemyTanks->enemyCollider.x << " , " << enemyTanks->enemyCollider.y << std::endl;
+		
 	}
 	else
 	{
@@ -227,29 +220,11 @@ int main(int argc, char* argv[])
 
 
 
-	/*SDL_Surface* image2 = SDL_LoadBMP("Assets/dig10k_penguin.bmp");
-	if (image2 == nullptr)
-	{
-		std::cout << "Failed to load image" << SDL_GetError();
-	}*/
-
+	
 	SDL_Texture* penguinTexture = LoadTexture("Assets/door.png");
-	//SDL_Texture* penguinTexture = LoadTexture("Assets/dig10k_penguin.bmp");
+	
 
 
-	//SDL_Texture* texture = SDL_CreateTextureFromSurface(g_sdlRenderer, image);
-	////error checking
-	//if (texture == nullptr)
-	//{
-	//	std::cout << "Failed to create texture from surface. SDL ERROR: " << SDL_GetError() << std::endl;
-	//}
-
-	/*SDL_Texture* texture2 = SDL_CreateTextureFromSurface(g_sdlRenderer, image2);
-	if (texture2 == nullptr)
-	{
-		std::cout << "Failed to create texture from surface. SDL ERROR: " << SDL_GetError() << std::endl;
-	}
-*/
 
 //load sound effect file
 	Mix_Chunk* coinsSFX = Mix_LoadWAV("Assets/Coin01.wav");
@@ -276,22 +251,20 @@ int main(int argc, char* argv[])
 
 	//SDL_QueryTexture(MagicTexture, NULL, NULL, &MagicWidth, &MagicHeight);
 
+	
 
-
-	Uint32 previousFrameTicks = SDL_GetTicks();
+	std::cout << "Player box collider at: " << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
+	std::cout << "Enemy Box Collider is at: " << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl; 
+	
 
 	while (keepRunning)
 	{
-		float deltaTime = (SDL_GetTicks() - (float)(previousFrameTicks)) / 1000;
-		previousFrameTicks = SDL_GetTicks();
+		
 		SDL_Event sdlEvent;   //logs event queue  
 		while (SDL_PollEvent(&sdlEvent))
 		{
-			/*keystate = SDL_GetKeyboardState(NULL);
-			* if(keystate[SDL_SCANCODE_RIGHT])
-			* ++MagicX
-			*
-			if(keystate)*///start of keystate function 
+			TimeMaths& TimeMathInstance = TimeMaths::getInstance();
+			float deltaTime = TimeMathInstance.getDeltaTime();
 			
 			
 
@@ -307,50 +280,37 @@ int main(int argc, char* argv[])
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
-					//--MagicX;
-					//--TankX;
-					PlayerTank.MoveLeft();
-					/*MyTank.MoveLeft();
-					MyTank.Render();*/
-					//std::cout << " X value of Tank is: " << PlayerTank.GetXValue() << std::endl;
+					
+					PlayerTank.MoveLeft(deltaTime);
+					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
-					//++MagicX;
-					//++TankX;
-					//PlayerTank.MoveRight();
-					PlayerTank.m_x += 200 * deltaTime; ///need this inside game logic to then call above function 
-					//std::cout << " X value of Tank is: " << PlayerTank.GetXValue() << std::endl;
+					
+					PlayerTank.MoveRight(deltaTime);
+					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
-					//--MagicY;
-					//--TankY;
-					PlayerTank.MoveUp();
-					//std::cout << "Y Value of Tank is: " << PlayerTank.GetYValue() << std::endl;
+					
+					PlayerTank.MoveUp(deltaTime);
+					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
-					//++MagicY;
-					//++TankY;
-					PlayerTank.MoveDown();
-					//std::cout << "Y Value of Tank is: " << PlayerTank.GetYValue() << std::endl;
+					
+					PlayerTank.MoveDown(deltaTime);
+					firstTank->MoveRight(deltaTime);
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					////tank shoot going here 
 					PlayerTank.changeTexture(TankTexture, MagicTexture);
+					TimeMathInstance.setTimeScale(0.5f);   //changes time scale (useful for slow mo effects) 
+					
 				}
 				
-
-				break;
-			case SDL_KEYUP:
-				if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
-				{
-					std::cout << "Up pressed" << std::endl;
-				}
-
 
 				break;
 			case SDL_MOUSEBUTTONUP:
@@ -382,6 +342,8 @@ int main(int argc, char* argv[])
 
 		PlayerTank.Draw(g_sdlRenderer);
 		enemyTanks->DrawTanks(g_sdlRenderer);
+
+		
 
 		//create destination for where the image will be copied{x,y,w,h} 
 		SDL_Rect destinationRect{ 25,25,16,16 };
