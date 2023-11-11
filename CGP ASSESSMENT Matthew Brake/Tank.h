@@ -11,12 +11,12 @@ class Tank : public GameObject
 public:
 	Tank();
 	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture);
-	int MoveUp(float deltaTime);
-	int MoveDown(float deltaTime);
-	int MoveLeft(float deltaTime);
-	int MoveRight(float deltaTime);
-	int GetXValue()const;
-	int GetYValue()const;
+	float MoveUp(float deltaTime);
+	float MoveDown(float deltaTime);
+	float MoveLeft(float deltaTime);
+	float MoveRight(float deltaTime);
+	float GetXValue()const;
+	float GetYValue()const;
 	void Draw(SDL_Renderer* renderer) override;
 	void changeTexture(SDL_Texture* baseTexture, SDL_Texture* newTexture);
 	void SetPosition(int x, int y);
@@ -28,7 +28,7 @@ private:
 	SDL_Texture* m_barrelTexture; 
 	Controller TankType;
 	int tankID;
-	float m_speed = 13; 
+	float m_speed = 15; 
 	
 
 	

@@ -1,11 +1,5 @@
 ﻿  EnemyTankSpawner.cpp
   Tank.cpp
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(36,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(43,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(50,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(58,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(63,9): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(68,9): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(74,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(75,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(76,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion

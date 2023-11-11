@@ -159,7 +159,7 @@ int main(int argc, char* argv[])
 	
 	
 	
-	SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Hello World", { 255,255,255,255 });
+	SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "TANK GAME", { 255,255,255,255 });
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, textSurface);
 	if (textTexture == nullptr)
 	{

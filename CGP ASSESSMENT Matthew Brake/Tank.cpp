@@ -29,21 +29,21 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 
 
 
-int Tank::MoveUp(float deltaTime)
+float Tank::MoveUp(float deltaTime)
 {
 	m_y -= m_speed * deltaTime;
 	boxCollider.y = m_y;
 	return m_y;
 }
 
-int Tank::MoveDown(float deltaTime)
+float Tank::MoveDown(float deltaTime)
 {
 	m_y += m_speed * deltaTime;
 	boxCollider.y = m_y;
 	return m_y;
 }
 
-int Tank::MoveLeft(float deltaTime)
+float Tank::MoveLeft(float deltaTime)
 {
 	m_x -= m_speed * deltaTime;
 	boxCollider.x = m_x;
@@ -51,19 +51,19 @@ int Tank::MoveLeft(float deltaTime)
 }
 
 
-int Tank::MoveRight(float deltaTime)
+float Tank::MoveRight(float deltaTime)
 {
 	m_x += m_speed * deltaTime;
 	boxCollider.x = m_x;
 	return m_x; 
 }
 
-int Tank::GetXValue() const
+float Tank::GetXValue() const
 {
 	return m_x;
 }
 
-int Tank::GetYValue() const
+float Tank::GetYValue() const
 {
 	return m_y;
 }
