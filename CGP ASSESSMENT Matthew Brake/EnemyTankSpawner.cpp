@@ -19,7 +19,7 @@ EnemyTankSpawner::EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* Barrel
 	enemyCollider.m_width = 40;
 	enemyCollider.m_height = 35;
 
-	
+	srand(static_cast<unsigned int>(std::time(0)));
 
 
 
@@ -68,6 +68,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 	//spawnedTanks[2]->m_x = 300;
 	std::cout << "Enemy Tanks Created: " << spawnedTanks.size() << std::endl;
 	std::cout << "First Tank Position is: " << spawnedTanks[0]->m_x << " , " << spawnedTanks[0]->m_y << std::endl;
+	std::cout << "First Tank Collider is: " << spawnedTanks[0]->boxCollider.x << " , " << spawnedTanks[0]->boxCollider.y << std::endl; 
 }
 
 void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer)

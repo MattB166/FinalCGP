@@ -1,4 +1,6 @@
-﻿  EnemyTankSpawner.cpp
-C:\Users\Matth\Documents\YEAR 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(60,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\YEAR 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(60,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\Matth\Documents\YEAR 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe
+﻿  main.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(194,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(194,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(252,18): warning C4101: 'MagicHeight': unreferenced local variable
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(252,6): warning C4101: 'MagicWidth': unreferenced local variable
+  CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe
