@@ -19,8 +19,7 @@ EnemyTankSpawner::EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* Barrel
 	enemyCollider.m_width = 40;
 	enemyCollider.m_height = 35;
 
-
-
+	
 
 
 
@@ -52,15 +51,23 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		////need to assign random dst rects 
 		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture));
 
+		int x = std::rand() % (800 - tankWidth);  ///not very random
+		int y = std::rand() % (600 - tankHeight);
 
+
+
+		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
+		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->m_x, spawnedTanks[i]->m_y);
+		
 
 	}
 
 	//need a way to assign randomly spawned positions on map 
-	spawnedTanks[0]->m_x = 100;
-	spawnedTanks[1]->m_x = 200;
-	spawnedTanks[2]->m_x = 300;
+	//spawnedTanks[0]->m_x = 100;
+	//spawnedTanks[1]->m_x = 200;
+	//spawnedTanks[2]->m_x = 300;
 	std::cout << "Enemy Tanks Created: " << spawnedTanks.size() << std::endl;
+	std::cout << "First Tank Position is: " << spawnedTanks[0]->m_x << " , " << spawnedTanks[0]->m_y << std::endl;
 }
 
 void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer)
@@ -83,6 +90,7 @@ Tank* EnemyTankSpawner::getTankByIndex(int index) const
 	
 	return nullptr;
 }
+
 
 void EnemyTankSpawner::AssignID()
 {

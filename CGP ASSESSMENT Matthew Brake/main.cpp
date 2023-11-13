@@ -190,7 +190,8 @@ int main(int argc, char* argv[])
 	Tank PlayerTank(TankTexture,BarrelTexture);
 	
 
-	
+	//PlayerTank.SetPlayerPosition(300, 300);
+	PlayerTank.SetColliderPos(PlayerTank.m_x, PlayerTank.m_y);  ////testing setting in main 
 
 	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture);
 
@@ -200,17 +201,18 @@ int main(int argc, char* argv[])
 	
 	
 	Tank* firstTank = enemyTanks->getTankByIndex(0);
+	//firstTank->SetColliderPos(firstTank->m_x, firstTank->m_y);
 	
 	//if (Collision::CircleCollision(2, 3, 1, 3, 2, 0.5f))   //testing circle collision 
 	//{
 	//	std::cout << "overlap detected" << std::endl; 
 	//}
 
-	if (Collision::SquareCollision(PlayerTank.boxCollider, enemyTanks->enemyCollider))
+	if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 	{
 		std::cout << "Clash" << std::endl; 
 		std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
-		std::cout << enemyTanks->enemyCollider.x << " , " << enemyTanks->enemyCollider.y << std::endl;
+		std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
 		
 	}
 	else

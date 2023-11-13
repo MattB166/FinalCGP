@@ -19,7 +19,9 @@ public:
 	float GetYValue()const;
 	void Draw(SDL_Renderer* renderer) override;
 	void changeTexture(SDL_Texture* baseTexture, SDL_Texture* newTexture);
-	void SetPosition(int x, int y);
+	void SetPlayerPosition(int x, int y);
+	void SetEnemyPosition(int x, int y); 
+	void SetColliderPos(int x, int y);
 	
 	
 private:
@@ -28,7 +30,8 @@ private:
 	SDL_Texture* m_barrelTexture; 
 	Controller TankType;
 	int tankID;
-	float m_speed = 15; 
+	float m_speed = 10; 
+	
 	
 
 	

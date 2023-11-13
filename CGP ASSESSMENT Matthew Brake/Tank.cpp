@@ -18,8 +18,9 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 	m_h = 35;
 	m_x = 50;
 	m_y = 50;
-	boxCollider.x = m_x;
-	boxCollider.y = m_y;
+	//boxCollider.x = m_x;
+	//boxCollider.y = m_y;
+	SetPlayerPosition(200, 200);
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
 	/////need to set min and max x and y values for collision function 
@@ -98,11 +99,25 @@ void Tank::changeTexture(SDL_Texture* baseTexture, SDL_Texture* newTexture)  ///
 	
 }
 
-void Tank::SetPosition(int x , int y)
+void Tank::SetPlayerPosition(int x , int y)
 {
 	m_x = x;
 	m_y = y;
 }
+
+void Tank::SetEnemyPosition(int x, int y)
+{
+	m_x = x;
+	m_y = y;
+}
+
+void Tank::SetColliderPos(int x, int y)
+{
+	boxCollider.x = x;
+	boxCollider.y = y; 
+}
+
+
 
 
 

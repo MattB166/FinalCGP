@@ -17,6 +17,7 @@ public:
 	Tank* getTankByIndex(int index) const;          /// rewrite my own draw function for just tank spawner as too much complexity 
 	                                         //using game object and tank one 
 	BoxCollider enemyCollider;
+	
 	void AssignID();
 	
 	
@@ -29,8 +30,8 @@ private:
 	SDL_Texture* enemyBaseTexture; 
 	SDL_Texture* enemyBarrelTexture; 
 	SDL_Renderer* renderer;
-	float m_x;
-	float m_y; 
+	float enemy_x;
+	float enemy_y; 
 	
 	int ID; 
 };
