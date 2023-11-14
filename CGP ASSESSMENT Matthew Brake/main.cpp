@@ -18,6 +18,8 @@ SDL_Window* g_sdlWindow;
 SDL_Renderer* g_sdlRenderer;
 const Uint8* keystate;
 TTF_Font* g_font; 
+int g_cameraX = 0;
+int g_cameraY = 0; 
 
 SDL_Texture* LoadTexture(const char* filename)
 {
@@ -284,24 +286,28 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveLeft(deltaTime);
+					//g_cameraX--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
+					//g_cameraX++;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
+					//g_cameraY--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
+					//g_cameraY++;
 					firstTank->MoveRight(deltaTime);
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
