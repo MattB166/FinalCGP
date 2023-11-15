@@ -13,7 +13,7 @@ public:
 	EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* BarrelTexture);
 	~EnemyTankSpawner();
 	void SpawnTank(int amountOfTanks);
-	void DrawTanks(SDL_Renderer* renderer);
+	void DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY);
 	Tank* getTankByIndex(int index) const;          /// rewrite my own draw function for just tank spawner as too much complexity 
 	                                         //using game object and tank one 
 	BoxCollider enemyCollider;

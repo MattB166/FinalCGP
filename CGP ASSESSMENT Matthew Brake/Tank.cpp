@@ -69,12 +69,12 @@ float Tank::GetYValue() const
 	return m_y;
 }
 
-void Tank::Draw(SDL_Renderer* renderer)
+void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
 {
-	GameObject::Draw(renderer);
+	GameObject::Draw(renderer, CameraX, CameraY);
 	int x = m_x + m_w / 2 - 8 / 2; /// setting barrel width 
 	int y = m_y + m_h / 2;  ///setting barrel height 
-	SDL_Rect dstRect{ x ,y ,m_w / 5,m_h / 1.3 }; //sets barrel dest to correct position
+	SDL_Rect dstRect{ x - CameraX ,y - CameraY ,m_w / 5,m_h / 1.3 }; //sets barrel dest to correct position
 	SDL_RenderCopy(renderer, m_barrelTexture, NULL, &dstRect); /// renders to renderer 
 
 
@@ -88,12 +88,12 @@ void Tank::changeTexture(SDL_Texture* baseTexture, SDL_Texture* newTexture)  ///
 	if (m_texture != newTexture)
 	{
 		m_texture = newTexture;
-		GameObject::Draw(renderer);
+		//GameObject::Draw(renderer);
 	}
 	else
 	{
 		m_texture = baseTexture;
-		GameObject::Draw(renderer);
+		//GameObject::Draw(renderer);
 	}
 
 	

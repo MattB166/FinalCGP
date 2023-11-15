@@ -15,7 +15,7 @@ public:
 	SDL_Texture* m_texture = nullptr;
 	SDL_Renderer* renderer;
 	BoxCollider boxCollider;
-	virtual void Draw(SDL_Renderer* renderer);
+	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY);
 	virtual void Destroy();
 };
 

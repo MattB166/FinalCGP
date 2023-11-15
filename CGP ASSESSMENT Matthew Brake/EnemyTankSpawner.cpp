@@ -71,12 +71,12 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 	std::cout << "First Tank Collider is: " << spawnedTanks[0]->boxCollider.x << " , " << spawnedTanks[0]->boxCollider.y << std::endl; 
 }
 
-void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer)
+void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY)
 {
 
 	for (Tank* tank : spawnedTanks)
 	{
-		tank->Draw(renderer);
+		tank->Draw(renderer, CameraX, CameraY);
 
 	}
 }

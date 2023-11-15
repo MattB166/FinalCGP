@@ -18,8 +18,8 @@ SDL_Window* g_sdlWindow;
 SDL_Renderer* g_sdlRenderer;
 const Uint8* keystate;
 TTF_Font* g_font; 
-int g_cameraX = 0;
-int g_cameraY = 0; 
+float g_cameraX = 0;
+float g_cameraY = 0; 
 
 SDL_Texture* LoadTexture(const char* filename)
 {
@@ -178,6 +178,9 @@ int main(int argc, char* argv[])
 	SDL_Texture* EnemyTankTexture = LoadTexture("Assets/PNG/Tanks/tankRed.png");
 	SDL_Texture* enemyBarrelTexture = LoadTexture("Assets/PNG/Tanks/barrelRed.png");
 
+
+	////load wall texture for wall obstacles 
+
 	/*int tankWidth = 40;
 	int tankHeight = 35;
 
@@ -286,28 +289,28 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveLeft(deltaTime);
-					//g_cameraX--;
+					g_cameraX--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					//g_cameraX++;
+					g_cameraX++;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
-					//g_cameraY--;
+					g_cameraY--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
-					//g_cameraY++;
+					g_cameraY++;
 					firstTank->MoveRight(deltaTime);
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
@@ -348,8 +351,8 @@ int main(int argc, char* argv[])
 		SDL_RenderClear(g_sdlRenderer);
 
 
-		PlayerTank.Draw(g_sdlRenderer);
-		enemyTanks->DrawTanks(g_sdlRenderer);
+		PlayerTank.Draw(g_sdlRenderer,g_cameraX,g_cameraY);
+		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY);
 
 		
 
