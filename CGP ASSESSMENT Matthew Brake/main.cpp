@@ -295,28 +295,28 @@ int main(int argc, char* argv[])
 					
 					
 						PlayerTank.MoveLeft(deltaTime);
-						//g_cameraX--;
+						
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					//g_cameraX++;
+					
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
-					//g_cameraY--;
+					
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
-					//g_cameraY++;
+					
 					//firstTank->MoveRight(deltaTime);
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
@@ -354,6 +354,8 @@ int main(int argc, char* argv[])
 		}
 
 		Level::CheckPlayerBounds(&PlayerTank);
+		g_cameraX = PlayerTank.m_x * 0.01;
+		g_cameraY = PlayerTank.m_y * 0.01;
 
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);

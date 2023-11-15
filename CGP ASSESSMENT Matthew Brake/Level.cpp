@@ -24,18 +24,18 @@ void Level::CheckPlayerBounds(Tank* tank)
 	{
 		tank->m_x = 0;
 	}
-	else if (tank->m_x >= WorldX)
+	else if (tank->m_x >= WorldX - tank->m_w)
 	{
-		tank->m_x = WorldX - 1;
+		tank->m_x = WorldX - tank->m_w; 
 	}
 	
 	if (tank->m_y <= 0)
 	{
 		tank->m_y = 0;
 	}
-	else if (tank->m_y >= WorldY)
+	else if (tank->m_y >= WorldY - tank->m_h)
 	{
-		tank->m_y = WorldY - 1; 
+		tank->m_y = WorldY - tank->m_h; 
 	}
 	
 	
