@@ -11,7 +11,7 @@
 #include "BoxCollider.h"
 #include "TimeMaths.h"
 
-
+#include "Level.h"
 
 
 SDL_Window* g_sdlWindow;
@@ -168,8 +168,11 @@ int main(int argc, char* argv[])
 		std::cout << "TTF failed to create text texture. SDL ERROR: " << TTF_GetError() << std::endl;
 	}
 	SDL_FreeSurface(textSurface);
+	SDL_Surface* ScoreSurface = TTF_RenderText_Blended(g_font, "SCORE: ", { 255,255,255,255 });
+	SDL_Texture* ScoreTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, ScoreSurface);
+	SDL_FreeSurface(ScoreSurface); 
 
-	
+	///loading background SDL_Texture* Background = LoadTexture();
 	
 
 	SDL_Texture* TankTexture = LoadTexture("Assets/PNG/Tanks/tankGreen.png");
@@ -213,18 +216,7 @@ int main(int argc, char* argv[])
 	//	std::cout << "overlap detected" << std::endl; 
 	//}
 
-	if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
-	{
-		std::cout << "Clash" << std::endl; 
-		std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
-		std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
-		
-	}
-	else
-	{
-		std::cout << "No Clash" << std::endl; 
-	}
-
+	
 
 
 	
@@ -245,7 +237,7 @@ int main(int argc, char* argv[])
 
 	SDL_SetRenderTarget(g_sdlRenderer, MagicTexture); //MAGIC TEXTURE COULD BE USEFUL AS LANDMINES  
 
-	SDL_SetRenderDrawColor(g_sdlRenderer, 0, 255, 0, 255);
+	//SDL_SetRenderDrawColor(g_sdlRenderer, 0, 255, 0, 0);
 	SDL_Rect BoxDST = { 16,16,32,32 };
 	SDL_RenderFillRect(g_sdlRenderer, &BoxDST); //renders texture to the display 
 
@@ -272,7 +264,18 @@ int main(int argc, char* argv[])
 		{
 			TimeMaths& TimeMathInstance = TimeMaths::getInstance();
 			float deltaTime = TimeMathInstance.getDeltaTime();
-			
+			if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
+			{
+				std::cout << "Clash" << std::endl;
+				std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
+				std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
+
+			}
+			else
+			{
+				std::cout << "No Clash" << std::endl;
+			}
+
 			
 
 			switch (sdlEvent.type)
@@ -287,31 +290,34 @@ int main(int argc, char* argv[])
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
+					std::cout << PlayerTank.m_x; 
 					
-					PlayerTank.MoveLeft(deltaTime);
-					g_cameraX--;
+					
+					
+						PlayerTank.MoveLeft(deltaTime);
+						//g_cameraX--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					g_cameraX++;
+					//g_cameraX++;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
-					g_cameraY--;
+					//g_cameraY--;
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
-					g_cameraY++;
-					firstTank->MoveRight(deltaTime);
+					//g_cameraY++;
+					//firstTank->MoveRight(deltaTime);
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
 				{
@@ -347,7 +353,9 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
+		Level::CheckPlayerBounds(&PlayerTank);
+
+		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);
 
 
@@ -356,11 +364,14 @@ int main(int argc, char* argv[])
 
 		
 
+
 		//create destination for where the image will be copied{x,y,w,h} 
 		SDL_Rect destinationRect{ 25,25,16,16 };
 		SDL_Rect destinationRect2{ 50,50,20,20 };
 		SDL_Rect destinationRect3{ MagicX - 10, MagicY - 10,20,20 }; //centres mouse to middle of texture with the -10's 
-		SDL_Rect fontDestRect{ 25,100,300,32 };
+		SDL_Rect fontDestRect{ 200,25,300,32 };
+		SDL_Rect ScoreDest{ 20,500,150,50 };
+		SDL_Rect backgroundRect{ 1000,800,32,32 };
 		//SDL_Rect TankRect{ TankX,TankY,tankWidth,tankHeight }; 
 		//int barrelX = TankRect.x + (TankRect.w - barrelWidth) / 2;
 		//int barrelY = TankRect.y + TankRect.h / 2; //locking bottom of barrel to centre of tank 
@@ -372,6 +383,8 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
 		SDL_RenderCopy(g_sdlRenderer, MagicTexture, NULL, &destinationRect3);
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
+		SDL_RenderCopy(g_sdlRenderer, ScoreTexture, NULL, &ScoreDest);
+		/*SDL_RenderCopy(g_sdlRenderer,backgroundtexture, NULL, &backgroundRect);*/
 
 
 

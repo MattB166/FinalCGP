@@ -20,7 +20,7 @@ public:
 	
 	void AssignID();
 	
-	
+	///need a tank movement and shooting function 
 	
 
 
