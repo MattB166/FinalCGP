@@ -1,8 +1,10 @@
 ﻿  main.cpp
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(202,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(202,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(357,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(358,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(249,18): warning C4101: 'MagicHeight': unreferenced local variable
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(249,6): warning C4101: 'MagicWidth': unreferenced local variable
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(221,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(221,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(364,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(365,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(397,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(398,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(275,18): warning C4101: 'MagicHeight': unreferenced local variable
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(275,6): warning C4101: 'MagicWidth': unreferenced local variable
   CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe

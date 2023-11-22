@@ -12,8 +12,14 @@ GameObject::GameObject(SDL_Texture* texture)
 
  void GameObject::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
 {
-	SDL_Rect dstRect{ m_x- CameraX,m_y-CameraY,m_w,m_h };
-	SDL_RenderCopy(renderer, m_texture, NULL, &dstRect);
+	 SDL_Rect srcRect;
+	 if (isAnimated)
+	 {
+		 int currentFrameIndex = (int)(timeInAnimationState * animationSpeed) % animFrames;
+		 srcRect = { currentFrameIndex * animPixelWidth, animState * animPixelHeight, animPixelWidth, animPixelHeight };
+	 }
+	 SDL_Rect dstRect{ m_x- CameraX,m_y-CameraY,m_w,m_h };
+	 SDL_RenderCopy(renderer, m_texture, isAnimated ? &srcRect : NULL, &dstRect);
 }
 
  void GameObject::Destroy()
@@ -22,5 +28,6 @@ GameObject::GameObject(SDL_Texture* texture)
 	 {
 		 SDL_DestroyTexture(m_texture);
 		 m_texture = nullptr;
+
 	 }
  }

@@ -182,6 +182,25 @@ int main(int argc, char* argv[])
 	SDL_Texture* enemyBarrelTexture = LoadTexture("Assets/PNG/Tanks/barrelRed.png");
 
 
+	SDL_Texture* sonicTexture = LoadTexture("Assets/sonic.png"); 
+	GameObject sonic (sonicTexture);
+	sonic.m_x = 30;
+	sonic.m_y = 30;
+	sonic.isAnimated = true;
+	sonic.animationSpeed = 5;
+	sonic.animPixelWidth = 48;
+	sonic.animPixelHeight = 48;
+	sonic.animState = 1;
+	sonic.animFrames = 7;
+
+
+	
+
+	
+	
+
+
+
 	////load wall texture for wall obstacles 
 
 	/*int tankWidth = 40;
@@ -217,7 +236,14 @@ int main(int argc, char* argv[])
 	//}
 
 	
-
+	SDL_Texture* explosion = LoadTexture("Assets/explosion.png");
+	GameObject OBJexplosion(explosion);
+	OBJexplosion.isAnimated = true; 
+	OBJexplosion.animationSpeed = 5;
+	OBJexplosion.animPixelWidth = 48;
+	OBJexplosion.animPixelHeight = 48;
+	OBJexplosion.animState = 0;
+	OBJexplosion.animFrames = 7;
 
 	
 	SDL_Texture* penguinTexture = LoadTexture("Assets/door.png");
@@ -296,13 +322,24 @@ int main(int argc, char* argv[])
 					
 						PlayerTank.MoveLeft(deltaTime);
 						
+						
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					
+					sonic.m_x++;
+					if (sonic.animState != 9)
+					{
+						
+						sonic.animState = 9;
+						sonic.animFrames = 4;
+						sonic.animPixelHeight = 64;
+						sonic.animPixelWidth = 64;
+						sonic.animationSpeed = 20;
+
+					}
 					
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
@@ -323,7 +360,10 @@ int main(int argc, char* argv[])
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					////tank shoot going here 
-					PlayerTank.changeTexture(TankTexture, MagicTexture);
+					OBJexplosion.isAnimated = true;
+					PlayerTank.m_w = OBJexplosion.animPixelWidth;
+					PlayerTank.m_h = OBJexplosion.animPixelHeight; 
+					PlayerTank.changeTexture(TankTexture, explosion);
 					TimeMathInstance.setTimeScale(0.5f);   //changes time scale (useful for slow mo effects) 
 					
 				}
@@ -354,8 +394,8 @@ int main(int argc, char* argv[])
 		}
 
 		Level::CheckPlayerBounds(&PlayerTank);
-		g_cameraX = PlayerTank.m_x * 0.01;
-		g_cameraY = PlayerTank.m_y * 0.01;
+		g_cameraX = PlayerTank.m_x * 0.04;
+		g_cameraY = PlayerTank.m_y * 0.04;
 
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);
@@ -363,7 +403,8 @@ int main(int argc, char* argv[])
 
 		PlayerTank.Draw(g_sdlRenderer,g_cameraX,g_cameraY);
 		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY);
-
+		sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
+		sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		
 
 
