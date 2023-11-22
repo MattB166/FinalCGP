@@ -361,6 +361,7 @@ int main(int argc, char* argv[])
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					////tank shoot going here 
 					OBJexplosion.isAnimated = true;
+					PlayerTank.isAnimated = true;
 					PlayerTank.m_w = OBJexplosion.animPixelWidth;
 					PlayerTank.m_h = OBJexplosion.animPixelHeight; 
 					PlayerTank.changeTexture(TankTexture, explosion);
