@@ -33,6 +33,7 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 float Tank::MoveUp(float deltaTime)
 {
 	m_y -= m_speed * deltaTime;
+	//TankPos.y -= m_speed * deltaTime;
 	boxCollider.y = m_y;
 	return m_y;
 }

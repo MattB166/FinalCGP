@@ -1,10 +1,18 @@
-﻿  main.cpp
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(221,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(221,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(365,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(366,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(398,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(399,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(275,18): warning C4101: 'MagicHeight': unreferenced local variable
-C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(275,6): warning C4101: 'MagicWidth': unreferenced local variable
+﻿  Tank.cpp
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(76,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(77,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,50): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,58): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(78,58): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(105,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(106,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(111,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(112,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(117,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(118,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\5BRAKM58\Downloads\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe

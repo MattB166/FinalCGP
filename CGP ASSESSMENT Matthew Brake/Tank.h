@@ -31,6 +31,7 @@ private:
 	Controller TankType;
 	int tankID;
 	float m_speed = 10; 
+	Vector2 TankPos;
 	
 
 	
