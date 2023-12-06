@@ -20,22 +20,22 @@ void Level::NewLevel()
 
 void Level::CheckPlayerBounds(Tank* tank)
 {
-	if (tank->m_x <= 0)
+	if (tank->Pos.x <= 0)
 	{
-		tank->m_x = 0;
+		tank->Pos.x = 0;
 	}
-	else if (tank->m_x >= WorldX - tank->m_w)
+	else if (tank->Pos.x >= WorldX - tank->m_w)
 	{
-		tank->m_x = WorldX - tank->m_w; 
+		tank->Pos.x = WorldX - tank->m_w;
 	}
 	
-	if (tank->m_y <= 0)
+	if (tank->Pos.x <= 0)
 	{
-		tank->m_y = 0;
+		tank->Pos.y = 0;
 	}
-	else if (tank->m_y >= WorldY - tank->m_h)
+	else if (tank->Pos.y >= WorldY - tank->m_h)
 	{
-		tank->m_y = WorldY - tank->m_h; 
+		tank->Pos.y = WorldY - tank->m_h;
 	}
 	
 	

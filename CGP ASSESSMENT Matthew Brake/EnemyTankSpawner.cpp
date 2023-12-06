@@ -57,7 +57,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 
 
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
-		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->m_x, spawnedTanks[i]->m_y);
+		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
 		
 
 	}
@@ -67,7 +67,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 	//spawnedTanks[1]->m_x = 200;
 	//spawnedTanks[2]->m_x = 300;
 	std::cout << "Enemy Tanks Created: " << spawnedTanks.size() << std::endl;
-	std::cout << "First Tank Position is: " << spawnedTanks[0]->m_x << " , " << spawnedTanks[0]->m_y << std::endl;
+	std::cout << "First Tank Position is: " << spawnedTanks[0]->Pos.x << " , " << spawnedTanks[0]->Pos.y << std::endl;
 	std::cout << "First Tank Collider is: " << spawnedTanks[0]->boxCollider.x << " , " << spawnedTanks[0]->boxCollider.y << std::endl; 
 }
 

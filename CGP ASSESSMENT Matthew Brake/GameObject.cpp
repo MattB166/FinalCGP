@@ -18,7 +18,7 @@ GameObject::GameObject(SDL_Texture* texture)
 		 int currentFrameIndex = (int)(timeInAnimationState * animationSpeed) % animFrames;
 		 srcRect = { currentFrameIndex * animPixelWidth, animState * animPixelHeight, animPixelWidth, animPixelHeight };
 	 }
-	 SDL_Rect dstRect{ m_x- CameraX,m_y-CameraY,m_w,m_h };
+	 SDL_Rect dstRect{ Pos.x- CameraX,Pos.y-CameraY,m_w,m_h };
 	 SDL_RenderCopy(renderer, m_texture, isAnimated ? &srcRect : NULL, &dstRect);
 }
 

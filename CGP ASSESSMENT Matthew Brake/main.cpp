@@ -184,8 +184,8 @@ int main(int argc, char* argv[])
 
 	SDL_Texture* sonicTexture = LoadTexture("Assets/sonic.png"); 
 	GameObject sonic (sonicTexture);
-	sonic.m_x = 30;
-	sonic.m_y = 30;
+	//sonic.m_x = 30;
+	//sonic.m_y = 30;
 	sonic.isAnimated = true;
 	sonic.animationSpeed = 5;
 	sonic.animPixelWidth = 48;
@@ -218,7 +218,7 @@ int main(int argc, char* argv[])
 	
 
 	//PlayerTank.SetPlayerPosition(300, 300);
-	PlayerTank.SetColliderPos(PlayerTank.m_x, PlayerTank.m_y);  ////testing setting in main 
+	PlayerTank.SetColliderPos(PlayerTank.Pos.x, PlayerTank.Pos.y);  ////testing setting in main 
 
 	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture);
 
@@ -316,7 +316,7 @@ int main(int argc, char* argv[])
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
-					std::cout << PlayerTank.m_x; 
+					std::cout << PlayerTank.Pos.x; 
 					
 					
 					
@@ -329,7 +329,7 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					sonic.m_x++;
+					//sonic.m_x++;
 					if (sonic.animState != 9)
 					{
 						
@@ -395,8 +395,8 @@ int main(int argc, char* argv[])
 		}
 
 		Level::CheckPlayerBounds(&PlayerTank);
-		g_cameraX = PlayerTank.m_x * 0.04;
-		g_cameraY = PlayerTank.m_y * 0.04;
+		g_cameraX = PlayerTank.Pos.x * 0.04;
+		g_cameraY = PlayerTank.Pos.y * 0.04;
 
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);
