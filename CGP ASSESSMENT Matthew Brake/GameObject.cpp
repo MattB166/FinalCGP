@@ -31,3 +31,8 @@ GameObject::GameObject(SDL_Texture* texture)
 
 	 }
  }
+
+ void GameObject::Rotate(float angle)
+ {
+	 rotation += angle;
+ }

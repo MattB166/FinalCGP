@@ -228,6 +228,8 @@ int main(int argc, char* argv[])
 	
 	
 	Tank* firstTank = enemyTanks->getTankByIndex(0);
+	Tank* secondTank = enemyTanks->getTankByIndex(1);
+	Tank* thirdTank = enemyTanks->getTankByIndex(2);
 	//firstTank->SetColliderPos(firstTank->m_x, firstTank->m_y);
 	
 	//if (Collision::CircleCollision(2, 3, 1, 3, 2, 0.5f))   //testing circle collision 
@@ -292,14 +294,22 @@ int main(int argc, char* argv[])
 			float deltaTime = TimeMathInstance.getDeltaTime();
 			if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			{
-				std::cout << "Clash" << std::endl;
+				std::cout << "Clash With First Tank" << std::endl;
 				std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
 				std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
 
 			}
+			else if(Collision::SquareCollision(PlayerTank.boxCollider, secondTank->boxCollider))
+			{
+				std::cout << "Clash With Second Tank" << std::endl;
+			}
+			else if (Collision::SquareCollision(PlayerTank.boxCollider, thirdTank->boxCollider))
+			{
+				std::cout << "Clash With Third Tank" << std::endl;
+			}
 			else
 			{
-				std::cout << "No Clash" << std::endl;
+				std::cout << "No Clash" << std::endl; 
 			}
 
 			
@@ -386,6 +396,8 @@ int main(int argc, char* argv[])
 
 				MagicX = sdlEvent.motion.x; //locks magicx to mousex position
 				MagicY = sdlEvent.motion.y; //locks magicy to mousey position
+				
+				
 				break;
 
 

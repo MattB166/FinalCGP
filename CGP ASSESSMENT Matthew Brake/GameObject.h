@@ -16,11 +16,13 @@ public:
 	Vector2 Pos;	
 	float m_w = 32;
 	float m_h = 32;
+	float rotation = 0.0f;
 	SDL_Texture* m_texture = nullptr;
 	SDL_Renderer* renderer;
 	BoxCollider boxCollider;
 	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY);
 	virtual void Destroy();
+	void Rotate(float angle);
 	bool isAnimated = false; 
 	int animPixelHeight = 16;
 	int animPixelWidth = 16;

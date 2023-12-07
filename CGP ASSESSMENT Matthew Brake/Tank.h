@@ -22,13 +22,16 @@ public:
 	void SetPlayerPosition(int x, int y);
 	void SetEnemyPosition(int x, int y); 
 	void SetColliderPos(int x, int y);
-	
+	void RotateTank(float RotationAngle); 
+	void UpdateTank(float deltaTime); 
 	
 private:
 	
 	//BoxCollider enemyCollider; 
 	SDL_Texture* m_barrelTexture; 
 	Controller TankType;
+	float angle; 
+	RigidBody2D rb;
 	int tankID;
 	float m_speed = 10; 
 	//Vector2 TankPos;
