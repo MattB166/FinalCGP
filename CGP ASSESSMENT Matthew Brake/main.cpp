@@ -373,6 +373,8 @@ int main(int argc, char* argv[])
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
+					//std::cout << "FIRE!" << std::endl; 
+					
 					////tank shoot going here 
 					//OBJexplosion.isAnimated = true;
 					//PlayerTank.isAnimated = true;

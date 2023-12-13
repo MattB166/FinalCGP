@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "Bullet.h"
 
 enum Controller
 {
@@ -24,7 +25,9 @@ public:
 	void SetColliderPos(int x, int y);
 	void RotateTank(float RotationAngle); 
 	void UpdateTank(float deltaTime); 
+	void Fire();
 	float BarrelAngle; 
+	 
 	
 private:
 	

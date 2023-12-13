@@ -81,14 +81,14 @@ void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX
 		BarrelAngle = atan2(mouseVec.y, mouseVec.x) * (180.0 / M_PI) - 90; 
 		PlayerPos = tankCentre;
 	}
-	else
+	/*else
 	{
 		Vector2 tankCentre = Pos + Vector2(m_w / 2, m_h / 2);
 		Vector2 PlayerVec = PlayerPos - tankCentre;
 
 		BarrelAngle = atan2(PlayerVec.y, PlayerVec.x) * (180 / M_PI); 
 		
-	}
+	}*/
 	int x = Pos.x + m_w / 2 - 8 / 2; /// setting barrel width 
 	int y = Pos.y + m_h / 2;  ///setting barrel height 
 	SDL_Rect dstRect{ x - CameraX ,y - CameraY ,m_w / 5,m_h / 1.3 }; //sets barrel dest to correct position
@@ -140,6 +140,16 @@ void Tank::SetColliderPos(int x, int y)
 void Tank::RotateTank(float RotationAngle)
 {
 	rb.angle += RotationAngle;
+}
+
+void Tank::UpdateTank(float deltaTime)
+{
+
+}
+
+void Tank::Fire()
+{
+	
 }
 
 

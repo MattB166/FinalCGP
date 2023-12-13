@@ -2,7 +2,6 @@
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(80,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(80,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(81,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(89,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(92,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(93,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(94,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
