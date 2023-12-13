@@ -17,7 +17,7 @@ public:
 	float MoveRight(float deltaTime);
 	float GetXValue()const;
 	float GetYValue()const;
-	void Draw(SDL_Renderer* renderer, float CameraX, float CameraY) override;
+	void Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer) override;
 	void changeTexture(SDL_Texture* baseTexture, SDL_Texture* newTexture);
 	void SetPlayerPosition(int x, int y);
 	void SetEnemyPosition(int x, int y); 

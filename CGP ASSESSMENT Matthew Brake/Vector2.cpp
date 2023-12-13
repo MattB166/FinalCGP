@@ -105,6 +105,8 @@ void Vector2::SetPosition(float x, float y)
 	this->y = y;
 }
 
+
+
 Vector2 Vector2::Normalize()
 {
 	float mag = GetMagnitude();

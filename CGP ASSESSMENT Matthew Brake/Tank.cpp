@@ -70,15 +70,32 @@ float Tank::GetYValue() const
 	return Pos.y;
 }
 
-void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
+void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer)
 {
-	GameObject::Draw(renderer, CameraX, CameraY);
+	GameObject::Draw(renderer, CameraX, CameraY, MouseX, MouseY, false);
+	Vector2 PlayerPos;
+	if (isPlayer)
+	{
+		Vector2 tankCentre = Pos + Vector2(m_w / 2, m_h / 2);
+		Vector2 mouseVec = Vector2(MouseX, MouseY) - tankCentre;
+		BarrelAngle = atan2(mouseVec.y, mouseVec.x) * (180.0 / M_PI) - 90; 
+		PlayerPos = tankCentre;
+	}
+	else
+	{
+		Vector2 tankCentre = Pos + Vector2(m_w / 2, m_h / 2);
+		Vector2 PlayerVec = PlayerPos - tankCentre;
+
+		BarrelAngle = atan2(PlayerVec.y, PlayerVec.x) * (180 / M_PI); 
+		
+	}
 	int x = Pos.x + m_w / 2 - 8 / 2; /// setting barrel width 
 	int y = Pos.y + m_h / 2;  ///setting barrel height 
 	SDL_Rect dstRect{ x - CameraX ,y - CameraY ,m_w / 5,m_h / 1.3 }; //sets barrel dest to correct position
 	SDL_Point BarrelAnchor = { 4,0 }; 
+	
 	//SDL_RenderCopy(renderer, m_barrelTexture, NULL, &dstRect);
-	SDL_RenderCopyEx(renderer, m_barrelTexture, NULL, &dstRect, BarrelAngle, &BarrelAnchor, { SDL_FLIP_NONE });    /// need to change to render copy ex to take in rotation 
+	SDL_RenderCopyEx(renderer, m_barrelTexture, NULL, &dstRect, BarrelAngle, &BarrelAnchor, { SDL_FLIP_NONE });     
 	//SDL_RenderCopyEx(renderer,m_barrelTexture,NULL,&dstRect,angle,) //last couple of parameters needed 
 
 }

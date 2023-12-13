@@ -11,8 +11,7 @@ public:
 	GameObject(SDL_Texture* texture);
  
 
-	//float m_x = 0; ///going to be obsolete when vector class complete 
-	//float m_y = 0;
+	
 	Vector2 Pos;	
 	float m_w = 32;
 	float m_h = 32;
@@ -20,7 +19,7 @@ public:
 	SDL_Texture* m_texture = nullptr;
 	SDL_Renderer* renderer;
 	BoxCollider boxCollider;
-	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY);
+	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer);
 	virtual void Destroy();
 	void Rotate(float angle);
 	bool isAnimated = false; 

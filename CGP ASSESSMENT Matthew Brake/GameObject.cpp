@@ -10,7 +10,7 @@ GameObject::GameObject(SDL_Texture* texture)
 	m_texture = texture;
 }
 
- void GameObject::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
+ void GameObject::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer)
 {
 	 SDL_Rect srcRect;
 	 if (isAnimated)

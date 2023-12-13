@@ -366,6 +366,7 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
+					PlayerTank.rotation -= 1; 
 					
 					//firstTank->MoveRight(deltaTime);
 				}
@@ -373,12 +374,12 @@ int main(int argc, char* argv[])
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					////tank shoot going here 
-					OBJexplosion.isAnimated = true;
-					PlayerTank.isAnimated = true;
-					PlayerTank.m_w = OBJexplosion.animPixelWidth;
-					PlayerTank.m_h = OBJexplosion.animPixelHeight; 
-					PlayerTank.changeTexture(TankTexture, explosion);
-					TimeMathInstance.setTimeScale(0.5f);   //changes time scale (useful for slow mo effects) 
+					//OBJexplosion.isAnimated = true;
+					//PlayerTank.isAnimated = true;
+					//PlayerTank.m_w = OBJexplosion.animPixelWidth;
+					//PlayerTank.m_h = OBJexplosion.animPixelHeight; 
+					//PlayerTank.changeTexture(TankTexture, explosion);
+					//TimeMathInstance.setTimeScale(0.5f);   //changes time scale (useful for slow mo effects) 
 					
 				}
 				
@@ -414,15 +415,15 @@ int main(int argc, char* argv[])
 		g_cameraX = PlayerTank.Pos.x * 0.04;
 		g_cameraY = PlayerTank.Pos.y * 0.04;
 
-		PlayerTank.BarrelAngle = MouseX; 
+		//PlayerTank.BarrelAngle = MouseX; 
 
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);
 
 
-		PlayerTank.Draw(g_sdlRenderer,g_cameraX,g_cameraY);
-		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY);
-		sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
+		PlayerTank.Draw(g_sdlRenderer,g_cameraX,g_cameraY, MouseX,MouseY, true);
+		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false);
+		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
 		sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		
 
