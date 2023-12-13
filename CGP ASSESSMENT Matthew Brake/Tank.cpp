@@ -83,10 +83,7 @@ void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX
 	}
 	/*else
 	{
-		Vector2 tankCentre = Pos + Vector2(m_w / 2, m_h / 2);
-		Vector2 PlayerVec = PlayerPos - tankCentre;
-
-		BarrelAngle = atan2(PlayerVec.y, PlayerVec.x) * (180 / M_PI); 
+		//// need a way for the enemy barrel to be locked on to player pos 
 		
 	}*/
 	int x = Pos.x + m_w / 2 - 8 / 2; /// setting barrel width 

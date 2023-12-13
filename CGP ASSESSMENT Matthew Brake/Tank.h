@@ -27,6 +27,7 @@ public:
 	void UpdateTank(float deltaTime); 
 	void Fire();
 	float BarrelAngle; 
+	int Health; 
 	 
 	
 private:

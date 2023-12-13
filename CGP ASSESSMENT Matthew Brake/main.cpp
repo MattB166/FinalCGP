@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
@@ -20,6 +21,7 @@ const Uint8* keystate;
 TTF_Font* g_font; 
 float g_cameraX = 0;
 float g_cameraY = 0; 
+Level Game;
 
 SDL_Texture* LoadTexture(const char* filename)
 {
@@ -168,9 +170,7 @@ int main(int argc, char* argv[])
 		std::cout << "TTF failed to create text texture. SDL ERROR: " << TTF_GetError() << std::endl;
 	}
 	SDL_FreeSurface(textSurface);
-	SDL_Surface* ScoreSurface = TTF_RenderText_Blended(g_font, "SCORE: ", { 255,255,255,255 });
-	SDL_Texture* ScoreTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, ScoreSurface);
-	SDL_FreeSurface(ScoreSurface); 
+	
 
 	///loading background SDL_Texture* Background = LoadTexture();
 	
@@ -373,6 +373,7 @@ int main(int argc, char* argv[])
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
+					Game.NewLevel();
 					//std::cout << "FIRE!" << std::endl; 
 					
 					////tank shoot going here 
@@ -412,6 +413,10 @@ int main(int argc, char* argv[])
 			}
 		}
 
+		std::string levelText = "LEVEL:" + std::to_string(Game.GetLevel());
+		SDL_Surface* LevelSurface = TTF_RenderText_Blended(g_font, levelText.c_str(), { 255,255,255,255 });
+		SDL_Texture* LevelTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, LevelSurface);
+		SDL_FreeSurface(LevelSurface);
 		
 		Level::CheckPlayerBounds(&PlayerTank);
 		g_cameraX = PlayerTank.Pos.x * 0.04;
@@ -448,7 +453,7 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
 		SDL_RenderCopy(g_sdlRenderer, MagicTexture, NULL, &destinationRect3);
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
-		SDL_RenderCopy(g_sdlRenderer, ScoreTexture, NULL, &ScoreDest);
+		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
 		/*SDL_RenderCopy(g_sdlRenderer,backgroundtexture, NULL, &backgroundRect);*/
 
 

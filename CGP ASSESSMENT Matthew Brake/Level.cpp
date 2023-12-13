@@ -10,12 +10,14 @@ Level::Level()
 
 void Level::PlayGame()
 {
-
+	LevelNumber = 1; 
 }
 
 void Level::NewLevel()
 {
 	//once tanks all destroyed. new level loads 
+	++LevelNumber; 
+	std::cout << "NEW LEVEL. Level is now Level: " << LevelNumber << std::endl;  
 }
 
 void Level::CheckPlayerBounds(Tank* tank)
@@ -40,6 +42,11 @@ void Level::CheckPlayerBounds(Tank* tank)
 	
 	
 	 //compares tank pos to bounds of window and if same the pos 
+}
+
+int Level::GetLevel()
+{
+	return LevelNumber;
 }
 
 
