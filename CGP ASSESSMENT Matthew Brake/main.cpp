@@ -283,6 +283,8 @@ int main(int argc, char* argv[])
 	std::cout << "Player box collider at: " << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
 	std::cout << "Enemy Box Collider is at: " << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl; 
 	
+	int MouseX = 0;
+	int MouseY = 0;
 
 	while (keepRunning)
 	{
@@ -356,6 +358,7 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
+					PlayerTank.rotation += 1;
 					
 					
 				}
@@ -385,15 +388,15 @@ int main(int argc, char* argv[])
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
 					std::cout << "Button Click" << std::endl;
-					int x;
-					int y;
-					SDL_GetMouseState(&x, &y);
-					std::cout << "X value is: " << x << "," << " Y Value is: " << y << std::endl;
+					
+					
+					std::cout << "X value is: " << MouseX << "," << " Y Value is: " << MouseY << std::endl;
 				}
 				break;
 			case SDL_MOUSEMOTION:
 				std::cout << "Current Mouse Position is: " << sdlEvent.motion.x << " , " << sdlEvent.motion.y << std::endl;
 
+				SDL_GetMouseState(&MouseX, &MouseY);
 				MagicX = sdlEvent.motion.x; //locks magicx to mousex position
 				MagicY = sdlEvent.motion.y; //locks magicy to mousey position
 				
@@ -406,9 +409,12 @@ int main(int argc, char* argv[])
 			}
 		}
 
+		
 		Level::CheckPlayerBounds(&PlayerTank);
 		g_cameraX = PlayerTank.Pos.x * 0.04;
 		g_cameraY = PlayerTank.Pos.y * 0.04;
+
+		PlayerTank.BarrelAngle = MouseX; 
 
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);

@@ -19,7 +19,11 @@ GameObject::GameObject(SDL_Texture* texture)
 		 srcRect = { currentFrameIndex * animPixelWidth, animState * animPixelHeight, animPixelWidth, animPixelHeight };
 	 }
 	 SDL_Rect dstRect{ Pos.x- CameraX,Pos.y-CameraY,m_w,m_h };
-	 SDL_RenderCopy(renderer, m_texture, isAnimated ? &srcRect : NULL, &dstRect);
+	// SDL_RenderCopy(renderer, m_texture, isAnimated ? &srcRect : NULL, &dstRect);
+	 SDL_RendererFlip flip = SDL_FLIP_NONE;
+
+	 SDL_RenderCopyEx(renderer, m_texture, isAnimated ? &srcRect : NULL, &dstRect, rotation, NULL, flip);
+	 
 }
 
  void GameObject::Destroy()

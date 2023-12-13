@@ -24,6 +24,7 @@ public:
 	void SetColliderPos(int x, int y);
 	void RotateTank(float RotationAngle); 
 	void UpdateTank(float deltaTime); 
+	float BarrelAngle; 
 	
 private:
 	

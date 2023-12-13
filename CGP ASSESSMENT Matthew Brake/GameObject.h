@@ -16,7 +16,7 @@ public:
 	Vector2 Pos;	
 	float m_w = 32;
 	float m_h = 32;
-	float rotation = 0.0f;
+	float rotation = 0;
 	SDL_Texture* m_texture = nullptr;
 	SDL_Renderer* renderer;
 	BoxCollider boxCollider;

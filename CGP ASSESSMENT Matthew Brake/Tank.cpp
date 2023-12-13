@@ -76,7 +76,9 @@ void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
 	int x = Pos.x + m_w / 2 - 8 / 2; /// setting barrel width 
 	int y = Pos.y + m_h / 2;  ///setting barrel height 
 	SDL_Rect dstRect{ x - CameraX ,y - CameraY ,m_w / 5,m_h / 1.3 }; //sets barrel dest to correct position
-	SDL_RenderCopy(renderer, m_barrelTexture, NULL, &dstRect); /// need to change to render copy ex to take in rotation 
+	SDL_Point BarrelAnchor = { 4,0 }; 
+	//SDL_RenderCopy(renderer, m_barrelTexture, NULL, &dstRect);
+	SDL_RenderCopyEx(renderer, m_barrelTexture, NULL, &dstRect, BarrelAngle, &BarrelAnchor, { SDL_FLIP_NONE });    /// need to change to render copy ex to take in rotation 
 	//SDL_RenderCopyEx(renderer,m_barrelTexture,NULL,&dstRect,angle,) //last couple of parameters needed 
 
 }
