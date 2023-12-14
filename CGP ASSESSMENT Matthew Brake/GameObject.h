@@ -19,7 +19,7 @@ public:
 	SDL_Texture* m_texture = nullptr;
 	SDL_Renderer* renderer;
 	BoxCollider boxCollider;
-	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer);
+	virtual void Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime);
 	virtual void Destroy();
 	void Rotate(float angle);
 	bool isAnimated = false; 

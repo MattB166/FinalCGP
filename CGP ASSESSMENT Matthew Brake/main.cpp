@@ -181,6 +181,7 @@ int main(int argc, char* argv[])
 	SDL_Texture* EnemyTankTexture = LoadTexture("Assets/PNG/Tanks/tankRed.png");
 	SDL_Texture* enemyBarrelTexture = LoadTexture("Assets/PNG/Tanks/barrelRed.png");
 
+	SDL_Texture* BulletTexture = LoadTexture("Assets/PNG/Bullets/bulletGreen.png");
 
 	SDL_Texture* sonicTexture = LoadTexture("Assets/sonic.png"); 
 	GameObject sonic (sonicTexture);
@@ -215,6 +216,7 @@ int main(int argc, char* argv[])
 	
 
 	Tank PlayerTank(TankTexture,BarrelTexture);
+	
 	
 
 	//PlayerTank.SetPlayerPosition(300, 300);
@@ -288,12 +290,12 @@ int main(int argc, char* argv[])
 
 	while (keepRunning)
 	{
-		
+		TimeMaths& TimeMathInstance = TimeMaths::getInstance();
+		float deltaTime = TimeMathInstance.getDeltaTime();
 		SDL_Event sdlEvent;   //logs event queue  
 		while (SDL_PollEvent(&sdlEvent))
 		{
-			TimeMaths& TimeMathInstance = TimeMaths::getInstance();
-			float deltaTime = TimeMathInstance.getDeltaTime();
+			
 			if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			{
 				std::cout << "Clash With First Tank" << std::endl;
@@ -374,6 +376,8 @@ int main(int argc, char* argv[])
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					Game.NewLevel();
+					PlayerTank.Fire(BulletTexture);
+					
 					//std::cout << "FIRE!" << std::endl; 
 					
 					////tank shoot going here 
@@ -428,8 +432,12 @@ int main(int argc, char* argv[])
 		SDL_RenderClear(g_sdlRenderer);
 
 
-		PlayerTank.Draw(g_sdlRenderer,g_cameraX,g_cameraY, MouseX,MouseY, true);
-		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false);
+		PlayerTank.Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, true, deltaTime);
+		for (auto* bullet : PlayerTank.bullets)
+		{
+			bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
+		}
+		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false, deltaTime);
 		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
 		sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		
@@ -476,6 +484,7 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(TankTexture);
 	SDL_DestroyTexture(BarrelTexture);
 	SDL_DestroyTexture(penguinTexture);
+	SDL_DestroyTexture(BulletTexture); 
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);
 	delete(enemyTanks);

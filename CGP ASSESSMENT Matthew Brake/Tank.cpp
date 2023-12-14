@@ -9,6 +9,14 @@ Tank::Tank()
 	
 }
 
+Tank::~Tank()
+{
+	for (auto* bullet : bullets)
+	{
+		delete bullet;
+	}
+}
+
 Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 {
 	m_texture = baseTexture; 
@@ -70,9 +78,9 @@ float Tank::GetYValue() const
 	return Pos.y;
 }
 
-void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer)
+void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime)
 {
-	GameObject::Draw(renderer, CameraX, CameraY, MouseX, MouseY, false);
+	GameObject::Draw(renderer, CameraX, CameraY, MouseX, MouseY, false, deltaTime);
 	Vector2 PlayerPos;
 	if (isPlayer)
 	{
@@ -144,8 +152,15 @@ void Tank::UpdateTank(float deltaTime)
 
 }
 
-void Tank::Fire()
+void Tank::Fire(SDL_Texture* texture)
 {
+	Bullet* bullet = new Bullet(texture); 
+	///set bullet velocity here. maybe bullet draw function here too? or inside its own class? 
+	///bullet->fire( needs to take turret angle etc in this. 
+	bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y = m_h / 2);
+	bullets.push_back(bullet); 
+	std::cout << "Added bullet to list" << std::endl; 
+	 
 	
 }
 
