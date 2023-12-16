@@ -157,11 +157,22 @@ void Tank::Fire(SDL_Texture* texture)
 	Bullet* bullet = new Bullet(texture); 
 	///set bullet velocity here. maybe bullet draw function here too? or inside its own class? 
 	///bullet->fire( needs to take turret angle etc in this. 
-	bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y = m_h / 2);
+	bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
 	bullets.push_back(bullet); 
 	std::cout << "Added bullet to list" << std::endl; 
 	 
 	
+}
+
+void Tank::DestroyBullets()
+{
+	for (auto* bullet : BulletsToDestroy)
+	{
+		delete bullet;
+		std::cout << " Bullet left bound. destroyed from memory" << std::endl;
+
+	}
+	BulletsToDestroy.clear();
 }
 
 

@@ -28,9 +28,11 @@ public:
 	void RotateTank(float RotationAngle); 
 	void UpdateTank(float deltaTime); 
 	void Fire(SDL_Texture* texture);
+	void DestroyBullets();
 	float BarrelAngle; 
 	int Health; 
 	std::list<Bullet*> bullets;
+	std::list<Bullet*> BulletsToDestroy; 
 	
 private:
 	

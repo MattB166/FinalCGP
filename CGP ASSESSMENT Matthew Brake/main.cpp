@@ -433,10 +433,41 @@ int main(int argc, char* argv[])
 
 
 		PlayerTank.Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, true, deltaTime);
-		for (auto* bullet : PlayerTank.bullets)
+
+		for (auto bulletIter = PlayerTank.bullets.begin(); bulletIter != PlayerTank.bullets.end();)
 		{
+			Bullet* bullet = *bulletIter;
 			bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
+			if (Game.CheckBulletBounds(bullet))
+			{
+				PlayerTank.BulletsToDestroy.push_back(bullet);
+				bulletIter = PlayerTank.bullets.erase(bulletIter);
+			}
+			else
+			{
+				++bulletIter;
+			}
 		}
+		PlayerTank.DestroyBullets();
+		
+
+		
+		//for (auto* bullet : PlayerTank.bullets)
+		//{
+		//	bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
+		//	
+		//}
+		//for (auto* bullet : PlayerTank.bullets)
+		//{
+		//	if (Game.CheckBulletBounds(bullet))
+		//	{
+		//		PlayerTank.bullets.remove(bullet);                           ////////working on this. trying to delete bullets which have left view 
+		//		PlayerTank.BulletsToDestroy.push_back(bullet);
+		//		
+		//	}
+		//}
+		//PlayerTank.DestroyBullets();
+		
 		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false, deltaTime);
 		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
 		sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;

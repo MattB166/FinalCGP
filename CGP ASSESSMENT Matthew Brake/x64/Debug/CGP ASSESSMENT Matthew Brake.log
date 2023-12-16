@@ -1,7 +1,4 @@
-﻿  Bullet.cpp
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(23,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(24,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Tank.cpp
+﻿  Tank.cpp
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(88,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(88,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(89,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data

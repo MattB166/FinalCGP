@@ -5,7 +5,7 @@ float Level::WorldY = 600;
 
 Level::Level()
 {
-
+	
 }
 
 void Level::PlayGame()
@@ -42,6 +42,33 @@ void Level::CheckPlayerBounds(Tank* tank)
 	
 	
 	 //compares tank pos to bounds of window and if same the pos 
+}
+
+bool Level::CheckBulletBounds(Bullet* bullet)
+{
+	if (bullet->Pos.x <= 0)
+	{
+		///mark for deletion 
+		return true;
+	}
+	else if (bullet->Pos.x >= WorldX)
+	{
+		return true;
+	   
+	}
+	else if (bullet->Pos.y <= 0)
+	{
+		return true;
+	}
+	else if (bullet->Pos.y >= WorldY)
+	{
+		return true; 
+	}
+	else
+	{
+		return false;
+	}
+	return false; 
 }
 
 int Level::GetLevel()
