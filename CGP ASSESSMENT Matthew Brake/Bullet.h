@@ -13,6 +13,7 @@ public:
 	
 private:
 	float bullet_Speed = 10;
+	float damage; 
 	RigidBody2D rb;
 
 };

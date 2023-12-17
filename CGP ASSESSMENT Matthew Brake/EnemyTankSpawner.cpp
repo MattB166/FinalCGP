@@ -1,5 +1,6 @@
 #include "EnemyTankSpawner.h"
 #include "Tank.h"
+#include "Collision.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -50,12 +51,13 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		int x = std::rand() % (800 - tankWidth);  
 		int y = std::rand() % (600 - tankHeight);
 
-
+		
 
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
 		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
 		
 		///want a way to check their positions so do not spawn on each other 
+		///check spawn pos doesnt clash with another tank 
 	}
 
 	
@@ -85,6 +87,7 @@ Tank* EnemyTankSpawner::getTankByIndex(int index) const
 	
 	return nullptr;
 }
+
 
 
 void EnemyTankSpawner::AssignID()

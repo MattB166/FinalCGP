@@ -33,7 +33,7 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
 	Health = 3;
-	Ammo = 10; 
+	BulletAmmo = 10; 
 	/////need to set min and max x and y values for collision function 
 	
 	
@@ -158,9 +158,9 @@ void Tank::UpdateTank(float deltaTime)
 void Tank::Fire(SDL_Texture* texture)
 {
 	
-	if (Ammo <= 0)
+	if (BulletAmmo <= 0)
 	{
-		Ammo = 0; 
+		BulletAmmo = 0; 
 		///do nothing
 	}
 	else
@@ -172,10 +172,15 @@ void Tank::Fire(SDL_Texture* texture)
 		bullets.push_back(bullet);
 		//std::cout << "Added bullet to list" << std::endl; 
 		std::cout << "Barrel Angle is: " << BarrelAngle << std::endl;
-		--Ammo; 
+		--BulletAmmo; 
 	}
 	
 	
+}
+
+void Tank::LayMine(SDL_Texture* texture)
+{
+	/// minebomb.laymine etc etc 
 }
 
 void Tank::TakeDamage(int damage)
@@ -196,7 +201,7 @@ void Tank::DestroyBullets()
 
 int Tank::GetAmmo()
 {
-	return Ammo; 
+	return BulletAmmo; 
 }
 
 int Tank::GetHealth()

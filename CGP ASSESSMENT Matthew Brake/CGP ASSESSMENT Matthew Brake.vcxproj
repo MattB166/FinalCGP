@@ -140,11 +140,13 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MineBomb.cpp" />
     <ClCompile Include="RigidBody2D.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="EnemyTankSpawner.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TimeMaths.cpp" />
+    <ClCompile Include="UI_Manager.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,10 +156,12 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MineBomb.h" />
     <ClInclude Include="RigidBody2D.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="EnemyTankSpawner.h" />
     <ClInclude Include="TimeMaths.h" />
+    <ClInclude Include="UI_Manager.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

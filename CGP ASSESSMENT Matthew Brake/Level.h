@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include "Tank.h"
+#include "UI_Manager.h"
 class Level
 {
 public:
