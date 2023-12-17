@@ -86,7 +86,7 @@ void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX
 	{
 		Vector2 tankCentre = Pos + Vector2(m_w / 2, m_h / 2);
 		Vector2 mouseVec = Vector2(MouseX, MouseY) - tankCentre;
-		BarrelAngle = atan2(mouseVec.y, mouseVec.x) * (180.0 / M_PI) - 90; 
+		BarrelAngle = atan2(mouseVec.y, mouseVec.x) * (180.0 / M_PI); 
 		PlayerPos = tankCentre;
 	}
 	/*else
@@ -100,7 +100,7 @@ void Tank::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX
 	SDL_Point BarrelAnchor = { 4,0 }; 
 	
 	//SDL_RenderCopy(renderer, m_barrelTexture, NULL, &dstRect);
-	SDL_RenderCopyEx(renderer, m_barrelTexture, NULL, &dstRect, BarrelAngle, &BarrelAnchor, { SDL_FLIP_NONE });     
+	SDL_RenderCopyEx(renderer, m_barrelTexture, NULL, &dstRect, BarrelAngle - 90, &BarrelAnchor, { SDL_FLIP_NONE });     
 	//SDL_RenderCopyEx(renderer,m_barrelTexture,NULL,&dstRect,angle,) //last couple of parameters needed 
 
 }
@@ -159,8 +159,8 @@ void Tank::Fire(SDL_Texture* texture)
 	///bullet->fire( needs to take turret angle etc in this. 
 	bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
 	bullets.push_back(bullet); 
-	std::cout << "Added bullet to list" << std::endl; 
-	 
+	//std::cout << "Added bullet to list" << std::endl; 
+	std::cout << "Barrel Angle is: " << BarrelAngle << std::endl; 
 	
 }
 
@@ -169,7 +169,7 @@ void Tank::DestroyBullets()
 	for (auto* bullet : BulletsToDestroy)
 	{
 		delete bullet;
-		std::cout << " Bullet left bound. destroyed from memory" << std::endl;
+		//std::cout << " Bullet left bound. destroyed from memory" << std::endl;
 
 	}
 	BulletsToDestroy.clear();
