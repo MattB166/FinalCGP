@@ -17,10 +17,11 @@ Tank::~Tank()
 	}
 }
 
-Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
+Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type)
 {
 	m_texture = baseTexture; 
 	m_barrelTexture = barrelTexture;
+	TankType = type; 
 	std::cout <<  "Tank Created" << std::endl;
 	m_w= 40;
 	m_h = 35;
@@ -196,6 +197,11 @@ void Tank::DestroyBullets()
 int Tank::GetAmmo()
 {
 	return Ammo; 
+}
+
+int Tank::GetHealth()
+{
+	return Health; 
 }
 
 

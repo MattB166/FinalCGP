@@ -13,7 +13,7 @@ class Tank : public GameObject
 public:
 	Tank();
 	~Tank();
-	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture);
+	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type);
 	float MoveUp(float deltaTime);
 	float MoveDown(float deltaTime);
 	float MoveLeft(float deltaTime);
@@ -31,6 +31,7 @@ public:
 	void TakeDamage(int damage); 
 	void DestroyBullets();
 	int GetAmmo();
+	int GetHealth();
 	float BarrelAngle; 
 	int Health; 
 	float Ammo; 

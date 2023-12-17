@@ -40,18 +40,14 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 {
 	for (int i = 0; i < amountOfTanks; i++)
 	{
-		//Tank enemyTank;
-		//spawnedTanks.push_back(&enemyTank);
+		
 		int tankWidth = 40;
 		int tankHeight = 35;
 
-		//int x = std::rand() % (WindowWidth - tankWidth);
-		//int y = std::rand() % (WindowHeight - tankHeight);
+	
+		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy));
 
-		////need to assign random dst rects 
-		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture));
-
-		int x = std::rand() % (800 - tankWidth);  ///not very random
+		int x = std::rand() % (800 - tankWidth);  
 		int y = std::rand() % (600 - tankHeight);
 
 
@@ -59,13 +55,10 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
 		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
 		
-
+		///want a way to check their positions so do not spawn on each other 
 	}
 
-	//need a way to assign randomly spawned positions on map 
-	//spawnedTanks[0]->m_x = 100;
-	//spawnedTanks[1]->m_x = 200;
-	//spawnedTanks[2]->m_x = 300;
+	
 	std::cout << "Enemy Tanks Created: " << spawnedTanks.size() << std::endl;
 	std::cout << "First Tank Position is: " << spawnedTanks[0]->Pos.x << " , " << spawnedTanks[0]->Pos.y << std::endl;
 	std::cout << "First Tank Collider is: " << spawnedTanks[0]->boxCollider.x << " , " << spawnedTanks[0]->boxCollider.y << std::endl; 
@@ -80,6 +73,7 @@ void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer, float CameraX, float Ca
 
 	}
 }
+
 
 Tank* EnemyTankSpawner::getTankByIndex(int index) const
 {

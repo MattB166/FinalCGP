@@ -215,7 +215,7 @@ int main(int argc, char* argv[])
 
 	
 
-	Tank PlayerTank(TankTexture,BarrelTexture);
+	Tank PlayerTank(TankTexture,BarrelTexture, Player);
 	
 	
 
