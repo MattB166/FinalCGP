@@ -220,7 +220,7 @@ int main(int argc, char* argv[])
 	
 
 	//PlayerTank.SetPlayerPosition(300, 300);
-	PlayerTank.SetColliderPos(PlayerTank.Pos.x, PlayerTank.Pos.y);  ////testing setting in main 
+	//PlayerTank.SetColliderPos(PlayerTank.Pos.x, PlayerTank.Pos.y);  ////testing setting in main 
 
 	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture);
 
@@ -258,14 +258,14 @@ int main(int argc, char* argv[])
 //load sound effect file
 	Mix_Chunk* coinsSFX = Mix_LoadWAV("Assets/Coin01.wav");
 
-	Mix_Music* music = Mix_LoadMUS("Assets/rng_lo-fi_loop.mp3");
+	Mix_Music* music = Mix_LoadMUS("Assets/battle-mus.mp3");
 	//play the music with infinte looping
 	Mix_PlayMusic(music, -1);
 
 
-	SDL_Texture* MagicTexture = SDL_CreateTexture(g_sdlRenderer, SDL_PIXELFORMAT_ARGB32, SDL_TEXTUREACCESS_TARGET, 64, 64); //creating own texture 
+	//SDL_Texture* MagicTexture = SDL_CreateTexture(g_sdlRenderer, SDL_PIXELFORMAT_ARGB32, SDL_TEXTUREACCESS_TARGET, 64, 64); //creating own texture 
 
-	SDL_SetRenderTarget(g_sdlRenderer, MagicTexture); //MAGIC TEXTURE COULD BE USEFUL AS LANDMINES  
+	//SDL_SetRenderTarget(g_sdlRenderer, MagicTexture); //MAGIC TEXTURE COULD BE USEFUL AS LANDMINES  
 
 	//SDL_SetRenderDrawColor(g_sdlRenderer, 0, 255, 0, 0);
 	SDL_Rect BoxDST = { 16,16,32,32 };
@@ -313,7 +313,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
-				std::cout << "No Clash" << std::endl; 
+				//std::cout << "No Clash" << std::endl; 
 			}
 
 			
@@ -330,7 +330,7 @@ int main(int argc, char* argv[])
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
-					std::cout << PlayerTank.Pos.x; 
+					//std::cout << PlayerTank.Pos.x; 
 					
 					
 					
@@ -375,8 +375,8 @@ int main(int argc, char* argv[])
 				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
-					Game.NewLevel();
-					PlayerTank.Fire(BulletTexture);
+					//Game.NewLevel();
+					
 					
 					//std::cout << "FIRE!" << std::endl; 
 					
@@ -395,10 +395,7 @@ int main(int argc, char* argv[])
 			case SDL_MOUSEBUTTONUP:
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
-					std::cout << "Button Click" << std::endl;
-					
-					
-					std::cout << "X value is: " << MouseX << "," << " Y Value is: " << MouseY << std::endl;
+					PlayerTank.Fire(BulletTexture);
 				}
 				break;
 			case SDL_MOUSEMOTION:
@@ -490,7 +487,7 @@ int main(int argc, char* argv[])
 		//SDL_RenderCopy(g_sdlRenderer, TankTexture, NULL, &TankRect);
 		//SDL_RenderCopy(g_sdlRenderer, BarrelTexture, NULL, &barrelRect);
 		SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
-		SDL_RenderCopy(g_sdlRenderer, MagicTexture, NULL, &destinationRect3);
+		//SDL_RenderCopy(g_sdlRenderer, MagicTexture, NULL, &destinationRect3);
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
 		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
 		/*SDL_RenderCopy(g_sdlRenderer,backgroundtexture, NULL, &backgroundRect);*/
@@ -519,6 +516,9 @@ int main(int argc, char* argv[])
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);
 	delete(enemyTanks);
+	//delete(firstTank);
+	//delete(secondTank);
+	//delete(thirdTank);
 	
 	cleanup();
 

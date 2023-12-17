@@ -11,7 +11,8 @@ public:
 	static bool CheckBulletBounds(Bullet* bullet); 
 	static float WorldX;
 	static float WorldY;
-	int LevelNumber = 0;
+	int LevelNumber = 1;
+	int PlayerAmmo; 
 	int GetLevel();
 
 protected:

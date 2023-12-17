@@ -11,6 +11,8 @@ Bullet::Bullet(SDL_Texture* texture)
 	m_texture = texture; 
 	m_w = 5;
 	m_h = 10;
+	boxCollider.m_height = 10;
+	boxCollider.m_width = 5; 
 	//rotation = -180.0f;
 	//Pos.x = 40;  //temporary values 
 	//Pos.y = 40;

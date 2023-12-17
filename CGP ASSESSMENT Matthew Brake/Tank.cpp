@@ -31,6 +31,8 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture)
 	SetPlayerPosition(200, 200);
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
+	Health = 3;
+	Ammo = 10; 
 	/////need to set min and max x and y values for collision function 
 	
 	
@@ -154,14 +156,30 @@ void Tank::UpdateTank(float deltaTime)
 
 void Tank::Fire(SDL_Texture* texture)
 {
-	Bullet* bullet = new Bullet(texture); 
-	///set bullet velocity here. maybe bullet draw function here too? or inside its own class? 
-	///bullet->fire( needs to take turret angle etc in this. 
-	bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
-	bullets.push_back(bullet); 
-	//std::cout << "Added bullet to list" << std::endl; 
-	std::cout << "Barrel Angle is: " << BarrelAngle << std::endl; 
 	
+	if (Ammo <= 0)
+	{
+		Ammo = 0; 
+		///do nothing
+	}
+	else
+	{
+		Bullet* bullet = new Bullet(texture);
+		///set bullet velocity here. maybe bullet draw function here too? or inside its own class? 
+		///bullet->fire( needs to take turret angle etc in this. 
+		bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
+		bullets.push_back(bullet);
+		//std::cout << "Added bullet to list" << std::endl; 
+		std::cout << "Barrel Angle is: " << BarrelAngle << std::endl;
+		--Ammo; 
+	}
+	
+	
+}
+
+void Tank::TakeDamage(int damage)
+{
+	Health -= damage; 
 }
 
 void Tank::DestroyBullets()
@@ -173,6 +191,11 @@ void Tank::DestroyBullets()
 
 	}
 	BulletsToDestroy.clear();
+}
+
+int Tank::GetAmmo()
+{
+	return Ammo; 
 }
 
 
