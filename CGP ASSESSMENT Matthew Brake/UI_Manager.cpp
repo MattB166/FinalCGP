@@ -14,3 +14,13 @@ void UI_Manager::DisplayLevelText()
 {
 
 }
+
+void UI_Manager::DisplayAmmo()
+{
+
+}
+
+void UI_Manager::DisplayScore()
+{
+
+}

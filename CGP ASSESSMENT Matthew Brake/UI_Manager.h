@@ -7,5 +7,6 @@ public:
 	~UI_Manager();
 	void DisplayLevelText();
 	void DisplayAmmo(); 
+	void DisplayScore(); 
 };
 
