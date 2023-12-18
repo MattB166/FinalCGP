@@ -75,15 +75,15 @@ void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer, float CameraX, float Ca
 
 	}
 }
-void EnemyTankSpawner::DestroyKilledTanks()
-{
-	for (auto* tank : TanksToDestroy)
-	{
-		delete tank;
-		std::cout << "Tank Destroyed" << std::endl; 
-	}
-	TanksToDestroy.clear();
-}
+//void EnemyTankSpawner::DestroyKilledTanks()
+//{
+//	for (auto* tank : TanksToDestroy)
+//	{
+//		delete tank;
+//		std::cout << "Tank Destroyed" << std::endl; 
+//	}
+//	TanksToDestroy.clear();
+//}
 
 
 Tank* EnemyTankSpawner::getTankByIndex(int index) const
