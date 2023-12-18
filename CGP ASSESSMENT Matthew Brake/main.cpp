@@ -13,6 +13,7 @@
 #include "TimeMaths.h"
 
 #include "Level.h"
+#include "GameManager.h"
 
 
 SDL_Window* g_sdlWindow;
@@ -55,7 +56,8 @@ bool initialise()
 		std::cout << "Failed to initialise SDL. SDL error: " << SDL_GetError() << std::endl;
 		return true;
 	}
-
+	
+	
 
 	//create a window with specified name, anywhere on screen, 800x600 pixel size and no SDL_windowflags.	
 
@@ -435,7 +437,12 @@ int main(int argc, char* argv[])
 		{
 			Bullet* bullet = *bulletIter;
 			bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
-			if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
+		   if (Game.CheckBulletBounds(bullet))
+			{
+				PlayerTank.BulletsToDestroy.push_back(bullet);
+				bulletIter = PlayerTank.bullets.erase(bulletIter);
+			}
+			else if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
 			{
 				std::cout << "Bullet Hit first tank. Damage Dealt" << std::endl;
 				firstTank->TakeDamage(1);
@@ -443,12 +450,6 @@ int main(int argc, char* argv[])
 				bulletIter = PlayerTank.bullets.erase(bulletIter); 
 				std::cout << "First Tank Health is now: " << firstTank->Health << std::endl; 
 			}
-			else if (Game.CheckBulletBounds(bullet))
-			{
-				PlayerTank.BulletsToDestroy.push_back(bullet);
-				bulletIter = PlayerTank.bullets.erase(bulletIter);
-			}
-			else
 			{
 				++bulletIter;
 			}
@@ -486,19 +487,12 @@ int main(int argc, char* argv[])
 		SDL_Rect fontDestRect{ 200,25,300,32 };
 		SDL_Rect ScoreDest{ 20,500,150,50 };
 		SDL_Rect backgroundRect{ 1000,800,32,32 };
-		//SDL_Rect TankRect{ TankX,TankY,tankWidth,tankHeight }; 
-		//int barrelX = TankRect.x + (TankRect.w - barrelWidth) / 2;
-		//int barrelY = TankRect.y + TankRect.h / 2; //locking bottom of barrel to centre of tank 
-		//SDL_Rect barrelRect{ barrelX,barrelY,barrelWidth,barrelHeight };
-
-		//copy texture onto rendering target at specified locations 
-		//SDL_RenderCopy(g_sdlRenderer, TankTexture, NULL, &TankRect);
-		//SDL_RenderCopy(g_sdlRenderer, BarrelTexture, NULL, &barrelRect);
+		
 		SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
-		//SDL_RenderCopy(g_sdlRenderer, MagicTexture, NULL, &destinationRect3);
+		
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
 		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
-		/*SDL_RenderCopy(g_sdlRenderer,backgroundtexture, NULL, &backgroundRect);*/
+		
 
 
 
@@ -516,7 +510,7 @@ int main(int argc, char* argv[])
 
 	
 
-	//clean up
+	
 	SDL_DestroyTexture(TankTexture);
 	SDL_DestroyTexture(BarrelTexture);
 	SDL_DestroyTexture(penguinTexture);
@@ -524,9 +518,7 @@ int main(int argc, char* argv[])
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);
 	delete(enemyTanks);
-	//delete(firstTank);
-	//delete(secondTank);
-	//delete(thirdTank);
+	
 	
 	cleanup();
 
