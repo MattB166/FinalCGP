@@ -1,12 +1,7 @@
-﻿  Level.cpp
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(10,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
-  UI_Manager.cpp
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(10,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
-  main.cpp
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(10,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
+﻿  main.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(11,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(423,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(424,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(279,18): warning C4101: 'MagicHeight': unreferenced local variable
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(279,6): warning C4101: 'MagicWidth': unreferenced local variable
-  Generating Code...
   CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe

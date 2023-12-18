@@ -14,8 +14,8 @@ public:
 	~EnemyTankSpawner();
 	void SpawnTank(int amountOfTanks);
 	void DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime);
-	Tank* getTankByIndex(int index) const;          /// rewrite my own draw function for just tank spawner as too much complexity 
-	void CheckTankSpawnPos(Tank* tank);                                                //using game object and tank one 
+	Tank* getTankByIndex(int index) const;          
+	void CheckTankSpawnPos(Tank* tank);                                                
 	BoxCollider enemyCollider;
 	
 	void AssignID();

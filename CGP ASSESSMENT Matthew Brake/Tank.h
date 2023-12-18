@@ -13,7 +13,7 @@ class Tank : public GameObject
 public:
 	Tank();
 	~Tank();
-	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type);
+	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type, std::string tag);
 	float MoveUp(float deltaTime);
 	float MoveDown(float deltaTime);
 	float MoveLeft(float deltaTime);

@@ -3,7 +3,7 @@
 class Collider
 {
 public: 
-
+	std::string Tag; 
 
 //protected:
 	float x;

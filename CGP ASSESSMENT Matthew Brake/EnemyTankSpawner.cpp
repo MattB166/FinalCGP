@@ -46,7 +46,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		int tankHeight = 35;
 
 	
-		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy));
+		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy, "Enemy"));
 
 		int x = std::rand() % (800 - tankWidth);  
 		int y = std::rand() % (600 - tankHeight);

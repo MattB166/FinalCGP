@@ -215,7 +215,7 @@ int main(int argc, char* argv[])
 
 	
 
-	Tank PlayerTank(TankTexture,BarrelTexture, Player);
+	Tank PlayerTank(TankTexture,BarrelTexture, Player, "Player");
 	
 	
 
@@ -378,7 +378,7 @@ int main(int argc, char* argv[])
 					//Game.NewLevel();
 					
 					
-					//std::cout << "FIRE!" << std::endl; 
+					 
 					
 					////tank shoot going here 
 					//OBJexplosion.isAnimated = true;
@@ -435,7 +435,15 @@ int main(int argc, char* argv[])
 		{
 			Bullet* bullet = *bulletIter;
 			bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
-			if (Game.CheckBulletBounds(bullet))
+			if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
+			{
+				std::cout << "Bullet Hit first tank. Damage Dealt" << std::endl;
+				firstTank->TakeDamage(1);
+				PlayerTank.BulletsToDestroy.push_back(bullet);
+				bulletIter = PlayerTank.bullets.erase(bulletIter); 
+				std::cout << "First Tank Health is now: " << firstTank->Health << std::endl; 
+			}
+			else if (Game.CheckBulletBounds(bullet))
 			{
 				PlayerTank.BulletsToDestroy.push_back(bullet);
 				bulletIter = PlayerTank.bullets.erase(bulletIter);

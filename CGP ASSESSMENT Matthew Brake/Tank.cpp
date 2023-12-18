@@ -17,7 +17,7 @@ Tank::~Tank()
 	}
 }
 
-Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type)
+Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type, std::string tag)
 {
 	m_texture = baseTexture; 
 	m_barrelTexture = barrelTexture;
@@ -34,6 +34,8 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	boxCollider.m_width = 40;
 	Health = 3;
 	BulletAmmo = 10; 
+	boxCollider.Tag = tag; 
+	
 	/////need to set min and max x and y values for collision function 
 	
 	

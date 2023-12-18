@@ -13,6 +13,7 @@ Bullet::Bullet(SDL_Texture* texture)
 	m_h = 10;
 	boxCollider.m_height = 10;
 	boxCollider.m_width = 5; 
+	boxCollider.Tag = "Bullet";
 	//rotation = -180.0f;
 	//Pos.x = 40;  //temporary values 
 	//Pos.y = 40;
@@ -39,6 +40,8 @@ void Bullet::Fire(float TurretAngle, float TurretX, float TurretY)
 
 	rb.velocity.x = velocityX;
 	rb.velocity.y = velocityY; 
+	boxCollider.y = Pos.y;
+	boxCollider.x = Pos.x; 
 
 	//rotation = atan2(rb.velocity.y, rb.velocity.x) * (180.0 / M_PI);
 	
@@ -50,6 +53,8 @@ void Bullet::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int Mous
 {
 	Pos.x += rb.velocity.x * deltaTime; 
 	Pos.y += rb.velocity.y * deltaTime;
+	boxCollider.x = Pos.x;
+	boxCollider.y = Pos.y;
 	
 	GameObject::Draw(renderer, CameraX, CameraY, MouseX, MouseY, true, deltaTime);
 	rotation = atan2(rb.velocity.y, rb.velocity.x) * (180.0 / M_PI) - 270; 
