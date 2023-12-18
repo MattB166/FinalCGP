@@ -252,7 +252,7 @@ int main(int argc, char* argv[])
 	OBJexplosion.animFrames = 7;
 
 	
-	SDL_Texture* penguinTexture = LoadTexture("Assets/door.png");
+	//SDL_Texture* penguinTexture = LoadTexture("Assets/door.png");
 	
 
 
@@ -490,7 +490,7 @@ int main(int argc, char* argv[])
 		SDL_Rect ScoreDest{ 20,500,150,50 };
 		SDL_Rect backgroundRect{ 1000,800,32,32 };
 		
-		SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
+		//SDL_RenderCopy(g_sdlRenderer, penguinTexture, NULL, &destinationRect2);
 		
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
 		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
@@ -515,7 +515,7 @@ int main(int argc, char* argv[])
 	
 	SDL_DestroyTexture(TankTexture);
 	SDL_DestroyTexture(BarrelTexture);
-	SDL_DestroyTexture(penguinTexture);
+	//SDL_DestroyTexture(penguinTexture);
 	SDL_DestroyTexture(BulletTexture); 
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);

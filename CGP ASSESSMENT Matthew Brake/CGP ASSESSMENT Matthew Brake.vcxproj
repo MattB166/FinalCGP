@@ -160,6 +160,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input_Manager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="MineBomb.h" />
     <ClInclude Include="RigidBody2D.h" />
     <ClInclude Include="Tank.h" />
