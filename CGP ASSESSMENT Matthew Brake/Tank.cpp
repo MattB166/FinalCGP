@@ -33,6 +33,7 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
 	Health = 3;
+	TankState = Alive; 
 	BulletAmmo = 10; 
 	boxCollider.Tag = tag; 
 	
@@ -188,6 +189,11 @@ void Tank::LayMine(SDL_Texture* texture)
 void Tank::TakeDamage(int damage)
 {
 	Health -= damage; 
+	if (Health <= 0)
+	{
+		Health = 0; 
+		TankState = Dead;
+	}
 }
 
 void Tank::DestroyBullets()
@@ -209,6 +215,10 @@ int Tank::GetAmmo()
 int Tank::GetHealth()
 {
 	return Health; 
+}
+State Tank::GetTankState()
+{
+	return TankState;
 }
 
 

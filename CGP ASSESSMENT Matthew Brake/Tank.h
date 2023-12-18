@@ -2,10 +2,16 @@
 #include "GameObject.h"
 #include "Bullet.h"
 #include <list>
+#include <vector>
+
 
 enum Controller
 {
 	Player, Enemy
+};
+enum State
+{
+	Alive, Dead
 };
 
 class Tank : public GameObject
@@ -33,6 +39,7 @@ public:
 	void DestroyBullets();
 	int GetAmmo();
 	int GetHealth();
+	State GetTankState();
 	float BarrelAngle; 
 	int Health; 
 	float BulletAmmo; 
@@ -40,11 +47,13 @@ public:
 	std::list<Bullet*> bullets;
 	std::list<Bullet*> BulletsToDestroy; 
 	
+	
 private:
 	
 	//BoxCollider enemyCollider; 
 	SDL_Texture* m_barrelTexture; 
 	Controller TankType;
+	State TankState; 
 	float angle; 
 	RigidBody2D rb;
 	int tankID;

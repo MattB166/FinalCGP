@@ -13,6 +13,7 @@ public:
 	static float WorldX;
 	static float WorldY;
 	int LevelNumber = 1;
+	int score = 0;
 	int PlayerAmmo; 
 	int GetLevel();
 

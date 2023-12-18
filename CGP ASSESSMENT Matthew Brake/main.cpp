@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
@@ -11,7 +12,7 @@
 #include "Collider.h"
 #include "BoxCollider.h"
 #include "TimeMaths.h"
-
+#include "Input_Manager.h"
 #include "Level.h"
 
 
@@ -128,6 +129,12 @@ bool initialise()
 		return true;
 	}
 
+	
+	
+
+	
+
+
 	return false;
 
 
@@ -161,7 +168,7 @@ int main(int argc, char* argv[])
 		return -1; 
 	}
 	
-
+	Input_Manager::Init();
 	
 	
 	
@@ -295,6 +302,7 @@ int main(int argc, char* argv[])
 		TimeMaths& TimeMathInstance = TimeMaths::getInstance();
 		float deltaTime = TimeMathInstance.getDeltaTime();
 		SDL_Event sdlEvent;   //logs event queue  
+		Input_Manager::UpdateKeyStates();
 		while (SDL_PollEvent(&sdlEvent))
 		{
 			
@@ -322,26 +330,22 @@ int main(int argc, char* argv[])
 
 			switch (sdlEvent.type)
 			{
+				
 			case SDL_QUIT:
 				keepRunning = false;
 				break;
 			case SDL_KEYDOWN:
-				if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
+				if (Input_Manager::GetKeyDown(SDL_SCANCODE_ESCAPE))
 				{
+					std::cout << "Escape Pressed" << std::endl; 
 					keepRunning = false;
 				}
-				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
+				else if (Input_Manager::GetKey(SDL_SCANCODE_A) || Input_Manager::GetKey(SDL_SCANCODE_LEFT))
 				{
-					//std::cout << PlayerTank.Pos.x; 
-					
-					
-					
-						PlayerTank.MoveLeft(deltaTime);
-						
-						
+					PlayerTank.MoveLeft(deltaTime);	
 					
 				}
-				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
+				else if (Input_Manager::GetKey(SDL_SCANCODE_D) || Input_Manager::GetKey(SDL_SCANCODE_RIGHT))
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
@@ -358,7 +362,7 @@ int main(int argc, char* argv[])
 					}
 					
 				}
-				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
+				else if (Input_Manager::GetKey(SDL_SCANCODE_W) || Input_Manager::GetKey(SDL_SCANCODE_UP))
 				{
 					
 					PlayerTank.MoveUp(deltaTime);
@@ -366,7 +370,7 @@ int main(int argc, char* argv[])
 					
 					
 				}
-				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
+				else if (Input_Manager::GetKey(SDL_SCANCODE_S) || Input_Manager::GetKey(SDL_SCANCODE_DOWN))
 				{
 					
 					PlayerTank.MoveDown(deltaTime);
@@ -374,7 +378,7 @@ int main(int argc, char* argv[])
 					
 					//firstTank->MoveRight(deltaTime);
 				}
-				else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
+				else if (Input_Manager::GetKey(SDL_SCANCODE_SPACE))
 				{
 					Mix_PlayChannel(-1, coinsSFX, 0);
 					//Game.NewLevel();
@@ -437,27 +441,63 @@ int main(int argc, char* argv[])
 		{
 			Bullet* bullet = *bulletIter;
 			bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
+
+			bool bulletHitTank = false; 
 		   if (Game.CheckBulletBounds(bullet))
 			{
 				PlayerTank.BulletsToDestroy.push_back(bullet);
 				bulletIter = PlayerTank.bullets.erase(bulletIter);
+				if (bulletIter == PlayerTank.bullets.end())
+				{
+					break;
+				}
 				 
-			}
-			else if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
+		   }
+		   else
+		   {
+			   for (Tank* enemyTank : enemyTanks->spawnedTanks)
+			   {
+				   if (Collision::SquareCollision(bullet->boxCollider, enemyTank->boxCollider))
+				   {
+					   enemyTank->TakeDamage(1);
+					   std::cout << "Enemy Damaged." << std::endl; 
+					   PlayerTank.BulletsToDestroy.push_back(bullet);
+					   bulletIter = PlayerTank.bullets.erase(bulletIter);
+					   std::cout << "This Tank Health now at: " << enemyTank->Health << std::endl; 
+					   
+					   bulletHitTank = true;
+					   break;
+				   }
+			   }
+			   if (!bulletHitTank)
+			   {
+				   ++bulletIter;
+			   }
+		   }
+			
+		   
+		   
+		   /*else if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
 			{
 				std::cout << "Bullet Hit first tank. Damage Dealt" << std::endl;
 				firstTank->TakeDamage(1);
 				PlayerTank.BulletsToDestroy.push_back(bullet);
 				bulletIter = PlayerTank.bullets.erase(bulletIter); 
 				std::cout << "First Tank Health is now: " << firstTank->Health << std::endl; 
+				if (firstTank->GetTankState() == Dead)
+				{
+					std::cout << "Tank Destroyed!" << std::endl;
+					
+					++Game.score;
+				}
 			}
 			else
 			{
 				++bulletIter;
-			}
+			}*/
 		}
 		PlayerTank.DestroyBullets();
-		
+		//enemyTanks->DestroyKilledTanks();
 
 		
 		//for (auto* bullet : PlayerTank.bullets)
