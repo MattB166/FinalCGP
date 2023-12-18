@@ -13,7 +13,7 @@
 #include "TimeMaths.h"
 
 #include "Level.h"
-#include "GameManager.h"
+
 
 
 SDL_Window* g_sdlWindow;
@@ -441,6 +441,7 @@ int main(int argc, char* argv[])
 			{
 				PlayerTank.BulletsToDestroy.push_back(bullet);
 				bulletIter = PlayerTank.bullets.erase(bulletIter);
+				 
 			}
 			else if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
 			{
@@ -450,6 +451,7 @@ int main(int argc, char* argv[])
 				bulletIter = PlayerTank.bullets.erase(bulletIter); 
 				std::cout << "First Tank Health is now: " << firstTank->Health << std::endl; 
 			}
+			else
 			{
 				++bulletIter;
 			}

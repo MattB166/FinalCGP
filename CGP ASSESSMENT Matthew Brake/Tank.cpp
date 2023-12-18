@@ -195,7 +195,7 @@ void Tank::DestroyBullets()
 	for (auto* bullet : BulletsToDestroy)
 	{
 		delete bullet;
-		//std::cout << " Bullet left bound. destroyed from memory" << std::endl;
+		std::cout << " Bullet destroyed from memory" << std::endl;
 
 	}
 	BulletsToDestroy.clear();

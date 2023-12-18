@@ -1,5 +1,11 @@
 #include "GameManager.h"
 
+GameManager::GameManager()
+{
+	g_sdlRenderer = g_sdlRenderer;
+	g_font = g_font;
+}
+
 GameManager::GameManager(SDL_Renderer* renderer, TTF_Font* font)
 {
 	g_sdlRenderer = renderer;
@@ -187,8 +193,27 @@ void GameManager::Cleanup()
 void GameManager::RunGame()
 {
 	keeprunning = true;
-	TimeMaths& TimeMathInstance = TimeMaths::getInstance();
-    deltaTime = TimeMathInstance.getDeltaTime();
+	while (keeprunning)
+	{
+		TimeMaths& TimeMathInstance = TimeMaths::getInstance();
+		deltaTime = TimeMathInstance.getDeltaTime();
+		InputManager.HandleInput(sdlevent, *this);
+		Render(); 
+
+		SDL_Rect destinationRect{ 25,25,16,16 };
+		SDL_Rect destinationRect2{ 50,50,20,20 };
+		//SDL_Rect destinationRect3{ MagicX - 10, MagicY - 10,20,20 }; //centres mouse to middle of texture with the -10's 
+		SDL_Rect fontDestRect{ 200,25,300,32 };
+		SDL_Rect ScoreDest{ 20,500,150,50 };
+		SDL_Rect backgroundRect{ 1000,800,32,32 };
+		std::string levelText = "LEVEL:" + std::to_string(GameLevel.GetLevel());
+		SDL_Surface* LevelSurface = TTF_RenderText_Blended(g_font, levelText.c_str(), { 255,255,255,255 });
+		SDL_Texture* LevelTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, LevelSurface);
+		SDL_FreeSurface(LevelSurface);
+
+		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
+	}
+	
 }
 
 Tank& GameManager::GetPlayerTank()

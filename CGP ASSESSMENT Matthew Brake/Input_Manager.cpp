@@ -1,12 +1,17 @@
 #include "Input_Manager.h"
 #include "GameManager.h"
+#include <sstream>
 
 
 void Input_Manager::HandleInput(SDL_Event& sdlEvent, GameManager& gameManager)
 {
 	bool& keepRunning = gameManager.keeprunning; 
+	SDL_Renderer* g_sdlRenderer = gameManager.g_sdlRenderer;
+	TTF_Font* g_font = gameManager.g_font;
 	Tank& PlayerTank = gameManager.GetPlayerTank();
 	float& deltaTime = gameManager.deltaTime;
+	float& g_cameraX = gameManager.g_cameraX;
+	float& g_cameraY = gameManager.g_cameraY; 
 	Mix_Chunk* coinsSFX = gameManager.coinsSFX;
 	SDL_Texture* BulletTexture = gameManager.BulletTexture; 
 	
@@ -102,5 +107,9 @@ void Input_Manager::HandleInput(SDL_Event& sdlEvent, GameManager& gameManager)
 				break;
 			}
 		}
+
+		g_cameraX = PlayerTank.Pos.x * 0.04;
+		g_cameraY = PlayerTank.Pos.y * 0.04;
+
 	}
 }
