@@ -36,14 +36,17 @@ public:
 	void Fire(SDL_Texture* texture);
 	void LayMine(SDL_Texture* texture); 
 	void TakeDamage(int damage); 
+	bool HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank);
+	void RotateEnemyBarrelToPlayer(const Tank& playerTank);
 	void DestroyBullets();
 	int GetAmmo();
 	int GetHealth();
 	State GetTankState();
 	float BarrelAngle; 
 	int Health; 
-	float BulletAmmo; 
+	float Ammo; 
 	float MinesAmmo; 
+	float coolDown;
 	std::list<Bullet*> bullets;
 	std::list<Bullet*> BulletsToDestroy; 
 	
@@ -55,6 +58,7 @@ private:
 	Controller TankType;
 	State TankState; 
 	float angle; 
+	
 	RigidBody2D rb;
 	int tankID;
 	float m_speed = 10; 

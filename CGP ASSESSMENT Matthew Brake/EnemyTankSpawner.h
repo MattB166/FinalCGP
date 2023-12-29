@@ -17,7 +17,8 @@ public:
 	void DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime);
 	//void DestroyKilledTanks();
 	Tank* getTankByIndex(int index) const;          
-	void CheckTankSpawnPos(Tank* tank);                                                
+	void CheckTankSpawnPos(Tank* tank);    
+	
 	BoxCollider enemyCollider;
 	std::vector<Tank*> spawnedTanks;
 	std::vector<Tank*> TanksToDestroy;

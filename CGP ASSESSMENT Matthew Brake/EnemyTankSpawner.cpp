@@ -44,17 +44,39 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		
 		int tankWidth = 40;
 		int tankHeight = 35;
+		bool overlap; 
+		
+		int x;
+		int y;
 
-	
-		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy, "Enemy"));
+		do {
+			
+		    overlap = false;
+			x = std::rand() % (800 - tankWidth);
+			y = std::rand() % (600 - tankHeight);
+			for (const auto& tank : spawnedTanks)
+			{
+				int dx = std::abs(x - tank->Pos.x);
+				int dy = std::abs(y - tank->Pos.y);
 
-		int x = std::rand() % (800 - tankWidth);  
-		int y = std::rand() % (600 - tankHeight);
+				if (dx < (tankWidth + 10) && dy < (tankHeight + 10))
+
+				{
+					overlap = true;
+					std::cout << "Overlap detected. spawning at new position." << std::endl; 
+					break;
+				}
+			}
+		} while (overlap);
 
 		
 
+		
+
+		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy, "Enemy"));
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
 		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
+		spawnedTanks[i]->Ammo = 10; 
 		
 		///want a way to check their positions so do not spawn on each other 
 		///check spawn pos doesnt clash with another tank 
@@ -74,6 +96,7 @@ void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer, float CameraX, float Ca
 		tank->Draw(renderer, CameraX, CameraY, MouseX,MouseY, false, deltaTime);
 
 	}
+	
 }
 //void EnemyTankSpawner::DestroyKilledTanks()
 //{
@@ -96,6 +119,8 @@ Tank* EnemyTankSpawner::getTankByIndex(int index) const
 	
 	return nullptr;
 }
+
+
 
 
 

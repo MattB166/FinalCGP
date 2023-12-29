@@ -190,7 +190,7 @@ int main(int argc, char* argv[])
 	SDL_Texture* EnemyTankTexture = LoadTexture("Assets/PNG/Tanks/tankRed.png");
 	SDL_Texture* enemyBarrelTexture = LoadTexture("Assets/PNG/Tanks/barrelRed.png");
 
-	SDL_Texture* BulletTexture = LoadTexture("Assets/PNG/Bullets/bulletGreen.png");
+	SDL_Texture* BulletTexture = LoadTexture("Assets/PNG/Bullets/bulletYellow.png");
 
 	SDL_Texture* sonicTexture = LoadTexture("Assets/sonic.png"); 
 	GameObject sonic (sonicTexture);
@@ -436,7 +436,24 @@ int main(int argc, char* argv[])
 
 
 		PlayerTank.Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, true, deltaTime);
-
+		PlayerTank.coolDown -= deltaTime; 
+		
+		for (int i = 0; i < enemyTanks->spawnedTanks.size(); i++)
+		{
+			Tank* enemyTank = enemyTanks->spawnedTanks[i];
+			
+			if (enemyTank->HasLineOfSight(PlayerTank, *enemyTank))
+			{
+				//std::cout << "Tank" << i << " has line of sight" << std::endl;
+				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
+				enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
+			
+			}
+			else
+			{
+				std::cout << "Tank" << i << "Has No line of sight" << std::endl; 
+			}
+		}
 		for (auto bulletIter = PlayerTank.bullets.begin(); bulletIter != PlayerTank.bullets.end();)
 		{
 			Bullet* bullet = *bulletIter;

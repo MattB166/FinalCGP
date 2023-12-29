@@ -34,8 +34,9 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	boxCollider.m_width = 40;
 	Health = 3;
 	TankState = Alive; 
-	BulletAmmo = 10; 
+	Ammo = 10; 
 	boxCollider.Tag = tag; 
+	coolDown = 0.0f;
 	
 	/////need to set min and max x and y values for collision function 
 	
@@ -160,10 +161,10 @@ void Tank::UpdateTank(float deltaTime)
 
 void Tank::Fire(SDL_Texture* texture)
 {
-	
-	if (BulletAmmo <= 0)
+	std::cout << "Firing" << std::endl; 
+	if (Ammo <= 0)
 	{
-		BulletAmmo = 0; 
+		Ammo = 0; 
 		///do nothing
 	}
 	else
@@ -173,9 +174,10 @@ void Tank::Fire(SDL_Texture* texture)
 		///bullet->fire( needs to take turret angle etc in this. 
 		bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
 		bullets.push_back(bullet);
+		coolDown = 3.0f; 
 		//std::cout << "Added bullet to list" << std::endl; 
 		std::cout << "Barrel Angle is: " << BarrelAngle << std::endl;
-		--BulletAmmo; 
+		--Ammo; 
 	}
 	
 	
@@ -196,6 +198,59 @@ void Tank::TakeDamage(int damage)
 	}
 }
 
+bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
+{
+	
+	
+		int playerX = PlayerTank.GetXValue() + PlayerTank.m_w / 2;
+		int playerY = PlayerTank.GetYValue() + PlayerTank.m_h / 2;
+		int enemyX = enemyTank.GetXValue() + enemyTank.m_w / 2;
+		int enemyY = enemyTank.GetYValue() + enemyTank.m_h / 2;
+
+		int dx = abs(enemyX - playerX);
+		int dy = abs(enemyY - playerY);
+
+		int sx = (playerX < enemyX) ? 1 : -1;
+		int sy = (playerY < enemyY) ? 1 : -1;
+
+		int err = dx - dy;
+		while (true)
+		{
+			if (playerX == enemyX && playerY == enemyY)
+			{
+				//std::cout << "SAME POS. BREAKING" << std::endl; 
+				break;
+
+			}
+			int e2 = 2 * err;
+
+			if (e2 > -dy)
+			{
+				err -= dy;
+				playerX += sx;
+			}
+			if (e2 < dx)
+			{
+				err += dx;
+				playerY += sy;
+		
+			}
+		}
+		//std::cout << "End of checks" << std::endl; 
+		return true;
+
+	
+	
+}
+void Tank::RotateEnemyBarrelToPlayer(const Tank& playerTank)
+{
+	float angle = atan2(playerTank.Pos.y - Pos.y, playerTank.Pos.x - Pos.x);
+
+	angle = angle * 180.0f / M_PI;
+
+	BarrelAngle = angle; 
+}
+
 void Tank::DestroyBullets()
 {
 	for (auto* bullet : BulletsToDestroy)
@@ -209,7 +264,7 @@ void Tank::DestroyBullets()
 
 int Tank::GetAmmo()
 {
-	return BulletAmmo; 
+	return Ammo; 
 }
 
 int Tank::GetHealth()
