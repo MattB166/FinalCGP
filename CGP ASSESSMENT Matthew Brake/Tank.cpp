@@ -258,11 +258,15 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 }
 void Tank::RotateEnemyBarrelToPlayer(const Tank& playerTank)
 {
-	float angle = atan2(playerTank.Pos.y - Pos.y, playerTank.Pos.x - Pos.x);
+	if (TankState != Dead)
+	{
+		float angle = atan2(playerTank.Pos.y - Pos.y, playerTank.Pos.x - Pos.x);
 
-	angle = angle * 180.0f / M_PI;
+		angle = angle * 180.0f / M_PI;
 
-	BarrelAngle = angle; 
+		BarrelAngle = angle;
+	}
+	
 }
 
 void Tank::DestroyBullets()
