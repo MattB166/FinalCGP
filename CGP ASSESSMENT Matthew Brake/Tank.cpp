@@ -37,6 +37,13 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	Ammo = 10; 
 	boxCollider.Tag = tag; 
 	coolDown = 0.0f;
+
+	explosionObject.isAnimated = false;
+	explosionObject.animationSpeed = 5;
+	explosionObject.animPixelWidth = 170;
+	explosionObject.animPixelHeight = 24; 
+	explosionObject.animState = 0;
+	explosionObject.animFrames = 7; 
 	
 	/////need to set min and max x and y values for collision function 
 	
@@ -161,10 +168,11 @@ void Tank::UpdateTank(float deltaTime)
 
 void Tank::Fire(SDL_Texture* texture)
 {
-	std::cout << "Firing" << std::endl; 
+	//std::cout << "Firing" << std::endl; 
 	if (Ammo <= 0)
 	{
 		Ammo = 0; 
+		//std::cout << "NO AMMO" << std::endl; 
 		///do nothing
 	}
 	else
@@ -191,10 +199,16 @@ void Tank::LayMine(SDL_Texture* texture)
 void Tank::TakeDamage(int damage)
 {
 	Health -= damage; 
+	std::cout << "Damage Taken" << std::endl; 
 	if (Health <= 0)
 	{
 		Health = 0; 
 		TankState = Dead;
+		explosionObject.animState = 0;
+		explosionObject.Pos.x = Pos.x;
+		explosionObject.Pos.y = Pos.y;
+		isAnimated = true; 
+		std::cout << "TANK Dead. animation playing" << std::endl; 
 	}
 }
 

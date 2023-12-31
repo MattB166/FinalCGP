@@ -250,13 +250,13 @@ int main(int argc, char* argv[])
 
 	
 	SDL_Texture* explosion = LoadTexture("Assets/explosion.png");
-	GameObject OBJexplosion(explosion);
+	/*GameObject OBJexplosion(explosion);
 	OBJexplosion.isAnimated = true; 
 	OBJexplosion.animationSpeed = 5;
 	OBJexplosion.animPixelWidth = 48;
 	OBJexplosion.animPixelHeight = 48;
 	OBJexplosion.animState = 0;
-	OBJexplosion.animFrames = 7;
+	OBJexplosion.animFrames = 7;*/
 
 	
 	//SDL_Texture* penguinTexture = LoadTexture("Assets/door.png");
@@ -296,6 +296,7 @@ int main(int argc, char* argv[])
 	
 	int MouseX = 0;
 	int MouseY = 0;
+	
 
 	while (keepRunning)
 	{
@@ -303,23 +304,33 @@ int main(int argc, char* argv[])
 		float deltaTime = TimeMathInstance.getDeltaTime();
 		SDL_Event sdlEvent;   //logs event queue  
 		Input_Manager::UpdateKeyStates();
+		int prevPlayerX = PlayerTank.GetXValue();
+		int prevPlayerY = PlayerTank.GetYValue();
 		while (SDL_PollEvent(&sdlEvent))
 		{
+			
 			
 			if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			{
 				std::cout << "Clash With First Tank" << std::endl;
 				std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
 				std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
+				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+				PlayerTank.TakeDamage(1);
 
 			}
 			else if(Collision::SquareCollision(PlayerTank.boxCollider, secondTank->boxCollider))
 			{
 				std::cout << "Clash With Second Tank" << std::endl;
+				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+				PlayerTank.TakeDamage(1);
+
 			}
 			else if (Collision::SquareCollision(PlayerTank.boxCollider, thirdTank->boxCollider))
 			{
 				std::cout << "Clash With Third Tank" << std::endl;
+				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+				PlayerTank.TakeDamage(1); 
 			}
 			else
 			{

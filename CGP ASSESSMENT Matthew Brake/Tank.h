@@ -42,6 +42,7 @@ public:
 	int GetAmmo();
 	int GetHealth();
 	State GetTankState();
+	GameObject explosionObject; 
 	float BarrelAngle; 
 	int Health; 
 	float Ammo; 
