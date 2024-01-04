@@ -15,7 +15,8 @@ GameObject::GameObject(SDL_Texture* texture)
 	 SDL_Rect srcRect;
 	 if (isAnimated)
 	 {
-		 int currentFrameIndex = (int)(timeInAnimationState * animationSpeed) % animFrames;
+		 //int currentFrameIndex = (int)(timeInAnimationState * animationSpeed) % animFrames;
+		 int currentFrameIndex = (int)(SDL_GetTicks() / animationSpeed) % animFrames; 
 		 srcRect = { currentFrameIndex * animPixelWidth, animState * animPixelHeight, animPixelWidth, animPixelHeight };
 	 }
 	 SDL_Rect dstRect{ Pos.x- CameraX,Pos.y-CameraY,m_w,m_h };

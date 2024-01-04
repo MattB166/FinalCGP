@@ -40,8 +40,8 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 
 	explosionObject.isAnimated = false;
 	explosionObject.animationSpeed = 5;
-	explosionObject.animPixelWidth = 170;
-	explosionObject.animPixelHeight = 24; 
+	explosionObject.animPixelWidth = 48;
+	explosionObject.animPixelHeight = 48; 
 	explosionObject.animState = 0;
 	explosionObject.animFrames = 7; 
 	
