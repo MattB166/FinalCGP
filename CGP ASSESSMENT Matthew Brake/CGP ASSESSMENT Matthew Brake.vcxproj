@@ -142,6 +142,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MineBomb.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="RigidBody2D.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="EnemyTankSpawner.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MineBomb.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="RigidBody2D.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="EnemyTankSpawner.h" />

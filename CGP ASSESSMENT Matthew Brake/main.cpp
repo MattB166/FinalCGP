@@ -451,6 +451,9 @@ int main(int argc, char* argv[])
 
 		PlayerTank.Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, true, deltaTime);
 		PlayerTank.coolDown -= deltaTime; 
+		firstTank->coolDown -= deltaTime;
+		secondTank->coolDown -= deltaTime;
+		thirdTank->coolDown -= deltaTime; 
 		
 		for (int i = 0; i < enemyTanks->spawnedTanks.size(); i++)
 		{
@@ -461,15 +464,69 @@ int main(int argc, char* argv[])
 				//std::cout << "Tank" << i << " has line of sight" << std::endl;
 				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
 				
-				////make this only fire once every 3 seconds or so 
-				enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
-			
+				if (enemyTank->coolDown <= 0 && !enemyTank->hasFired)
+				{
+					enemyTank->Fire(BulletTexture); 
+					/*for (auto bulletIter = enemyTank->bullets.begin(); bulletIter != enemyTank->bullets.end();)
+					{
+						Bullet* bullet = *bulletIter;
+						bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, PlayerTank.GetXValue(), PlayerTank.GetYValue(), false, deltaTime);
+					
+						bool bulletHitTank = false;
+						if (Game.CheckBulletBounds(bullet))
+						{
+							enemyTank->BulletsToDestroy.push_back(bullet);
+							bulletIter = enemyTank->bullets.erase(bulletIter);
+							if (bulletIter == enemyTank->bullets.end())
+							{
+								break;
+							}
+
+						}
+					}*/
+				}
+				else
+				{
+					std::cout << "Tank in Cooldown/JustFired" << std::endl; 
+				}
+				
 			}
 			else
 			{
 				std::cout << "Tank" << i << "Has No line of sight" << std::endl; 
 			}
 		}
+		for (auto& enemyTank : enemyTanks->spawnedTanks)
+		{
+			for (auto bulletIter = enemyTank->bullets.begin(); bulletIter != enemyTank->bullets.end();)
+			{
+				Bullet* bullet = *bulletIter; 
+				if (bullet != nullptr)
+				{
+					bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, PlayerTank.GetXValue(), PlayerTank.GetYValue(), false, deltaTime);
+					bool bulletHitTank = false;
+					if (Game.CheckBulletBounds(bullet))
+					{
+						enemyTank->BulletsToDestroy.push_back(bullet);
+						bulletIter = enemyTank->bullets.erase(bulletIter);
+						if (bulletIter == enemyTank->bullets.end())
+						{
+							break;
+						}
+					}
+					else
+					{
+						++bulletIter;
+					}
+				}
+				else
+				{
+					++bulletIter; 
+				}
+				
+			}
+		}
+	
 		for (auto bulletIter = PlayerTank.bullets.begin(); bulletIter != PlayerTank.bullets.end();)
 		{
 			Bullet* bullet = *bulletIter;
@@ -530,6 +587,9 @@ int main(int argc, char* argv[])
 			}*/
 		}
 		PlayerTank.DestroyBullets();
+		firstTank->DestroyBullets();
+		secondTank->DestroyBullets();
+		thirdTank->DestroyBullets(); 
 		//enemyTanks->DestroyKilledTanks();
 
 		

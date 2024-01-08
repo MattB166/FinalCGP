@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "Bullet.h"
+#include "SDL_mixer.h"
+
 #include <list>
 #include <vector>
 
@@ -48,6 +50,7 @@ public:
 	float Ammo; 
 	float MinesAmmo; 
 	float coolDown;
+	bool hasFired = false; 
 	std::list<Bullet*> bullets;
 	std::list<Bullet*> BulletsToDestroy; 
 	
@@ -59,8 +62,9 @@ private:
 	SDL_Texture* ExplodingTexture;
 	Controller TankType;
 	State TankState; 
-	float angle; 
+	Mix_Chunk* Win;
 	
+	float angle; 
 	RigidBody2D rb;
 	int tankID;
 	float m_speed = 10; 

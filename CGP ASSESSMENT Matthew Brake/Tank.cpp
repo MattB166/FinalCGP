@@ -15,6 +15,7 @@ Tank::~Tank()
 	{
 		delete bullet;
 	}
+	Mix_FreeChunk(Win); 
 }
 
 Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* SecondTexture, Controller type, std::string tag)
@@ -23,6 +24,7 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* Sec
 	m_barrelTexture = barrelTexture;
 	ExplodingTexture = SecondTexture; 
 	TankType = type; 
+	Win = Mix_LoadWAV("Assets/Winsound.wav");
 	std::cout <<  "Tank Created" << std::endl;
 	m_w= 40;
 	m_h = 35;
@@ -180,14 +182,19 @@ void Tank::Fire(SDL_Texture* texture)
 	{
 		///do nothing 
 	}
+	else if (TankState == Dead)
+	{
+		////cannot fire
+	}
 	else
 	{
+
 		Bullet* bullet = new Bullet(texture);
 		///set bullet velocity here. maybe bullet draw function here too? or inside its own class? 
 		///bullet->fire( needs to take turret angle etc in this. 
 		bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
 		bullets.push_back(bullet);
-		coolDown = 30.0f; 
+		coolDown = 60.0f; 
 		//std::cout << "Added bullet to list" << std::endl; 
 		std::cout << "Barrel Angle is: " << BarrelAngle << std::endl;
 		--Ammo; 
@@ -209,6 +216,11 @@ void Tank::TakeDamage(int damage)
 	{
 		Health = 0; 
 		TankState = Dead;
+		Mix_PlayChannel(-1, Win, 0);
+		if (!Win)
+		{
+			std::cerr << "Failed to load sound: " << Mix_GetError() << std::endl;
+		}
 		m_texture = ExplodingTexture; 
 		m_barrelTexture = nullptr; 
 		if (animState != 7)
