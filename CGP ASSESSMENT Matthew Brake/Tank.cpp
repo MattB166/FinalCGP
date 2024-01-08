@@ -17,10 +17,11 @@ Tank::~Tank()
 	}
 }
 
-Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type, std::string tag)
+Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* SecondTexture, Controller type, std::string tag)
 {
 	m_texture = baseTexture; 
 	m_barrelTexture = barrelTexture;
+	ExplodingTexture = SecondTexture; 
 	TankType = type; 
 	std::cout <<  "Tank Created" << std::endl;
 	m_w= 40;
@@ -38,12 +39,12 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type
 	boxCollider.Tag = tag; 
 	coolDown = 0.0f;
 
-	explosionObject.isAnimated = false;
-	explosionObject.animationSpeed = 5;
-	explosionObject.animPixelWidth = 48;
-	explosionObject.animPixelHeight = 48; 
-	explosionObject.animState = 0;
-	explosionObject.animFrames = 7; 
+	isAnimated = false;
+    animationSpeed = 60;
+	animPixelWidth = 48;
+	animPixelHeight = 48; 
+	animState = 0;
+	animFrames = 7; 
 	
 	/////need to set min and max x and y values for collision function 
 	
@@ -204,11 +205,17 @@ void Tank::TakeDamage(int damage)
 	{
 		Health = 0; 
 		TankState = Dead;
-		explosionObject.animState = 0;
-		explosionObject.Pos.x = Pos.x;
-		explosionObject.Pos.y = Pos.y;
-		isAnimated = true; 
-		std::cout << "TANK Dead. animation playing" << std::endl; 
+		m_texture = ExplodingTexture; 
+		m_barrelTexture = nullptr; 
+		if (animState != 7)
+		{
+			isAnimated = true;
+			animState = 0;
+			//explosionObject.Pos.x = Pos.x;
+			//explosionObject.Pos.y = Pos.y;
+			std::cout << "TANK Dead. animation playing" << std::endl;
+		}
+		
 	}
 }
 

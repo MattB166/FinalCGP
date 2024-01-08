@@ -221,17 +221,17 @@ int main(int argc, char* argv[])
 
 	int TankX = 200;
 	int TankY = 200;*/
-
+	SDL_Texture* explosion = LoadTexture("Assets/explosion.png");
 	
 
-	Tank PlayerTank(TankTexture,BarrelTexture, Player, "Player");
+	Tank PlayerTank(TankTexture,BarrelTexture, explosion, Player, "Player");
 	
 	
 
 	//PlayerTank.SetPlayerPosition(300, 300);
 	//PlayerTank.SetColliderPos(PlayerTank.Pos.x, PlayerTank.Pos.y);  ////testing setting in main 
 
-	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture);
+	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture, explosion);
 
 	enemyTanks->SpawnTank(3);
 	
@@ -249,7 +249,7 @@ int main(int argc, char* argv[])
 	//}
 
 	
-	SDL_Texture* explosion = LoadTexture("Assets/explosion.png");
+	
 	/*GameObject OBJexplosion(explosion);
 	OBJexplosion.isAnimated = true; 
 	OBJexplosion.animationSpeed = 5;
@@ -457,7 +457,9 @@ int main(int argc, char* argv[])
 			{
 				//std::cout << "Tank" << i << " has line of sight" << std::endl;
 				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
-				enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
+				
+				////make this only fire once every 3 seconds or so 
+				//enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
 			
 			}
 			else

@@ -11,7 +11,7 @@ class EnemyTankSpawner ////class for spawning enemy tanks
 public:
 
 	EnemyTankSpawner();
-	EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* BarrelTexture);
+	EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* BarrelTexture, SDL_Texture* SecondTexture);
 	~EnemyTankSpawner();
 	void SpawnTank(int amountOfTanks);
 	void DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime);
@@ -34,6 +34,7 @@ private:
 	
 	SDL_Texture* enemyBaseTexture; 
 	SDL_Texture* enemyBarrelTexture; 
+	SDL_Texture* SecondaryTexture; 
 	SDL_Renderer* renderer;
 	float enemy_x;
 	float enemy_y; 

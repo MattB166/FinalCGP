@@ -1,4 +1,5 @@
 #include "Level.h"
+#include <string>
 
 float Level::WorldX = 800;
 float Level::WorldY = 600;
@@ -11,6 +12,30 @@ Level::Level()
 void Level::PlayGame()
 {
 	LevelNumber = 1; 
+}
+
+void Level::StartTimer()
+{
+	timeElapsed = 0.0f;
+	isTimeRunning = true; 
+}
+
+void Level::RenderTimer(float delta,_TTF_Font* font)
+{
+	if (isTimeRunning)
+	{
+		timeElapsed += delta; 
+
+		float RemainingTime = TimeRemaining - timeElapsed; 
+
+		std::string timerText = "TIME: " + std::to_string(static_cast<int>(RemainingTime)); 
+		//SDL_Surface* textSurface = TTF_RenderText_Solid(font, timerText.c_str()); 
+	}
+}
+
+float Level::GetRemainingTime()
+{
+	return TimeRemaining; 
 }
 
 void Level::NewLevel()

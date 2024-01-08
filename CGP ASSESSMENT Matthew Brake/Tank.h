@@ -19,7 +19,7 @@ class Tank : public GameObject
 public:
 	Tank();
 	~Tank();
-	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture, Controller type, std::string tag);
+	Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* SecondTexture, Controller type, std::string tag);
 	float MoveUp(float deltaTime);
 	float MoveDown(float deltaTime);
 	float MoveLeft(float deltaTime);
@@ -42,7 +42,7 @@ public:
 	int GetAmmo();
 	int GetHealth();
 	State GetTankState();
-	GameObject explosionObject; 
+	//GameObject explosionObject; 
 	float BarrelAngle; 
 	int Health; 
 	float Ammo; 
@@ -56,6 +56,7 @@ private:
 	
 	//BoxCollider enemyCollider; 
 	SDL_Texture* m_barrelTexture; 
+	SDL_Texture* ExplodingTexture;
 	Controller TankType;
 	State TankState; 
 	float angle; 

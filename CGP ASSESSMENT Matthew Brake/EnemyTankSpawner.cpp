@@ -11,11 +11,11 @@ EnemyTankSpawner::EnemyTankSpawner()
 
 }
 
-EnemyTankSpawner::EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* BarrelTexture)
+EnemyTankSpawner::EnemyTankSpawner(SDL_Texture* BaseTexture, SDL_Texture* BarrelTexture, SDL_Texture* SecondTexture)
 {
 	enemyBaseTexture = BaseTexture;
 	enemyBarrelTexture = BarrelTexture;
-	
+	SecondaryTexture = SecondTexture; 
 
 	enemyCollider.m_width = 40;
 	enemyCollider.m_height = 35;
@@ -73,7 +73,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 
 		
 
-		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture, Enemy, "Enemy"));
+		spawnedTanks.push_back(new Tank(enemyBaseTexture, enemyBarrelTexture,SecondaryTexture, Enemy, "Enemy"));
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
 		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
 		spawnedTanks[i]->Ammo = 10; 
