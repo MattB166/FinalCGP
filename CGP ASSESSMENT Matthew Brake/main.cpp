@@ -296,16 +296,19 @@ int main(int argc, char* argv[])
 	
 	int MouseX = 0;
 	int MouseY = 0;
+	Game.StartTimer();
 	
-
 	while (keepRunning)
 	{
 		TimeMaths& TimeMathInstance = TimeMaths::getInstance();
 		float deltaTime = TimeMathInstance.getDeltaTime();
+		
+		
 		SDL_Event sdlEvent;   //logs event queue  
 		Input_Manager::UpdateKeyStates();
 		int prevPlayerX = PlayerTank.GetXValue();
 		int prevPlayerY = PlayerTank.GetYValue();
+
 		while (SDL_PollEvent(&sdlEvent))
 		{
 			
@@ -459,7 +462,7 @@ int main(int argc, char* argv[])
 				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
 				
 				////make this only fire once every 3 seconds or so 
-				//enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
+				enemyTank->Fire(BulletTexture); ////they are firing, but no bullets being drawn 
 			
 			}
 			else
@@ -548,7 +551,7 @@ int main(int argc, char* argv[])
 		
 		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false, deltaTime);
 		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
-		sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
+		//sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		
 
 
@@ -564,7 +567,7 @@ int main(int argc, char* argv[])
 		
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
 		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
-		
+		Game.RenderTimer(deltaTime, g_font, g_sdlRenderer);
 
 
 

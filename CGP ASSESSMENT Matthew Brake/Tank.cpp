@@ -176,6 +176,10 @@ void Tank::Fire(SDL_Texture* texture)
 		//std::cout << "NO AMMO" << std::endl; 
 		///do nothing
 	}
+	else if (coolDown > 0)
+	{
+		///do nothing 
+	}
 	else
 	{
 		Bullet* bullet = new Bullet(texture);
@@ -183,7 +187,7 @@ void Tank::Fire(SDL_Texture* texture)
 		///bullet->fire( needs to take turret angle etc in this. 
 		bullet->Fire(BarrelAngle, Pos.x + m_w / 2, Pos.y + m_h / 2);
 		bullets.push_back(bullet);
-		coolDown = 3.0f; 
+		coolDown = 30.0f; 
 		//std::cout << "Added bullet to list" << std::endl; 
 		std::cout << "Barrel Angle is: " << BarrelAngle << std::endl;
 		--Ammo; 

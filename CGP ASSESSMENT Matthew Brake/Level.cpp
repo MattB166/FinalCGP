@@ -20,16 +20,32 @@ void Level::StartTimer()
 	isTimeRunning = true; 
 }
 
-void Level::RenderTimer(float delta,_TTF_Font* font)
+void Level::RenderTimer(float delta,_TTF_Font* font, SDL_Renderer* Renderer)
 {
 	if (isTimeRunning)
 	{
 		timeElapsed += delta; 
 
 		float RemainingTime = TimeRemaining - timeElapsed; 
+		std::cout << RemainingTime << std::endl; 
 
 		std::string timerText = "TIME: " + std::to_string(static_cast<int>(RemainingTime)); 
-		//SDL_Surface* textSurface = TTF_RenderText_Solid(font, timerText.c_str()); 
+		SDL_Surface* textSurface = TTF_RenderText_Blended(font, timerText.c_str(), { 255,255,255,255 });
+		timerTexture = SDL_CreateTextureFromSurface(Renderer, textSurface); 
+		timerRect.x = 300;
+		timerRect.y = 100;
+		timerRect.w = textSurface->w;
+		timerRect.h = textSurface->h; 
+
+		SDL_RenderCopy(Renderer, timerTexture, nullptr, &timerRect); 
+
+		SDL_FreeSurface(textSurface);
+		SDL_DestroyTexture(timerTexture); 
+		if (RemainingTime <= 0.0f)
+		{
+			isTimeRunning = false; 
+		}
+
 	}
 }
 

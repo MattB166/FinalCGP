@@ -10,7 +10,7 @@ public:
 	Level();
 	void PlayGame();
 	void StartTimer();
-	void RenderTimer(float delta, TTF_Font* font);
+	void RenderTimer(float delta, TTF_Font* font, SDL_Renderer* Renderer);
 	float GetRemainingTime(); 
 	void NewLevel();
 	static void CheckPlayerBounds(Tank* tank);
@@ -24,6 +24,8 @@ public:
 	int score = 0;
 	int PlayerAmmo; 
 	int GetLevel();
+	SDL_Texture* timerTexture; 
+	SDL_Rect timerRect; 
 
 protected:
 
