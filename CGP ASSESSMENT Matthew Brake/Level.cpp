@@ -45,9 +45,75 @@ void Level::RenderTimer(float delta,_TTF_Font* font, SDL_Renderer* Renderer)
 		if (RemainingTime <= 0.0f)
 		{
 			isTimeRunning = false; 
-			////game over 
+			Gameover = true; 
+			
 		}
 
+	}
+}
+
+void Level::RenderAmmo(TTF_Font* font, SDL_Renderer* renderer, Tank* Player)
+{
+	PlayerAmmo = Player->Ammo;
+
+	std::string ammoText = "Ammo: " + std::to_string(PlayerAmmo);
+	SDL_Surface* textSurf = TTF_RenderText_Blended(font, ammoText.c_str(), { 0,0,255,255 });
+	SDL_Texture* ammoTexture = SDL_CreateTextureFromSurface(renderer, textSurf);
+
+	SDL_Rect AmmoRect;
+	AmmoRect.x = 10;
+	AmmoRect.y = 10; 
+	AmmoRect.w = textSurf->w;
+	AmmoRect.h = textSurf->h; 
+
+	SDL_RenderCopy(renderer, ammoTexture, nullptr, &AmmoRect);
+
+	SDL_FreeSurface(textSurf);
+	SDL_DestroyTexture(ammoTexture); 
+}
+
+void Level::RenderHealth(TTF_Font* font, SDL_Renderer* renderer, Tank* Player)
+{
+	PlayerHealth = Player->Health; 
+
+	std::string HealthText = "Health: " + std::to_string(PlayerHealth);
+	SDL_Surface* textsurf = TTF_RenderText_Blended(font, HealthText.c_str(), { 0,255,255,255 });
+	SDL_Texture* HealthTexture = SDL_CreateTextureFromSurface(renderer, textsurf); 
+
+	SDL_Rect HealthRect;
+	HealthRect.x = 10;
+	HealthRect.y = 50;
+
+	HealthRect.w = textsurf->w;
+	HealthRect.h = textsurf->h; 
+
+	SDL_RenderCopy(renderer, HealthTexture, nullptr, &HealthRect);
+
+	SDL_FreeSurface(textsurf);
+	SDL_DestroyTexture(HealthTexture); 
+}
+
+void Level::RenderPlayerLost(TTF_Font* font, SDL_Renderer* renderer, Tank* Player)
+{
+	Gameover = Player->bHasLostGame();
+
+	if (Gameover)
+	{
+		std::string GameOverText = "GAME OVER. YOU LOST ! "; 
+		SDL_Surface* Textsurf = TTF_RenderText_Blended(font, GameOverText.c_str(), { 0,0,255,255 });
+		SDL_Texture* GameOverTexture = SDL_CreateTextureFromSurface(renderer, Textsurf);
+
+		SDL_Rect EndGameRect;
+		EndGameRect.x = 250;
+		EndGameRect.y = 400;
+
+		EndGameRect.w = Textsurf->w;
+		EndGameRect.h = Textsurf->h; 
+
+		SDL_RenderCopy(renderer, GameOverTexture, nullptr, &EndGameRect); 
+
+		SDL_FreeSurface(Textsurf);
+		SDL_DestroyTexture(GameOverTexture); 
 	}
 }
 

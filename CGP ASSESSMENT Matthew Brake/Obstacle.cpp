@@ -20,8 +20,8 @@ Obstacle::Obstacle(SDL_Texture* texture)
 	m_texture = texture;
 	m_w = 60;
 	m_h = 60;
-	boxCollider.m_height = 60;
-	boxCollider.m_width = 60;
+	boxCollider.m_height = 45;
+	boxCollider.m_width = 30;
 
 	srand(static_cast<unsigned int>(std::time(0)));
 

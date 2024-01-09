@@ -13,6 +13,7 @@
 #include "BoxCollider.h"
 #include "TimeMaths.h"
 #include "Input_Manager.h"
+#include "Pickup.h"
 #include "Obstacle.h"
 #include "Level.h"
 
@@ -193,18 +194,11 @@ int main(int argc, char* argv[])
 
 	SDL_Texture* BulletTexture = LoadTexture("Assets/PNG/Bullets/bulletYellow.png");
 
-	SDL_Texture* sonicTexture = LoadTexture("Assets/sonic.png"); 
-	GameObject sonic (sonicTexture);
-	//sonic.m_x = 30;
-	//sonic.m_y = 30;
-	sonic.isAnimated = true;
-	sonic.animationSpeed = 5;
-	sonic.animPixelWidth = 48;
-	sonic.animPixelHeight = 48;
-	sonic.animState = 1;
-	sonic.animFrames = 7;
+	SDL_Texture* ChestTexture = LoadTexture("Assets/chestclosed.png");
 
+	SDL_Texture* MagicTexture = SDL_CreateTexture(g_sdlRenderer, SDL_PIXELFORMAT_ARGB32, SDL_TEXTUREACCESS_TARGET, 64, 64); //creating own texture 
 
+	SDL_SetRenderTarget(g_sdlRenderer, MagicTexture); //MAGIC TEXTURE COULD BE USEFUL AS LANDMINES  
 	
 
 	
@@ -234,12 +228,16 @@ int main(int argc, char* argv[])
 
 	EnemyTankSpawner* enemyTanks = new EnemyTankSpawner(EnemyTankTexture, enemyBarrelTexture, explosion);
 
-	enemyTanks->SpawnTank(3);
+	enemyTanks->SpawnTank(5);
 	
 	Obstacle* Obstacles = new Obstacle(Trees);
 
 	Obstacles->SpawnObstacles(10, *enemyTanks);
 	
+	Pickup* Pickups = new Pickup(ChestTexture,MagicTexture);
+
+	Pickups->SpawnPickups(5, *enemyTanks, *Obstacles);
+
 	
 	Tank* firstTank = enemyTanks->getTankByIndex(0);
 	Tank* secondTank = enemyTanks->getTankByIndex(1);
@@ -275,9 +273,7 @@ int main(int argc, char* argv[])
 	Mix_PlayMusic(music, -1);
 
 
-	//SDL_Texture* MagicTexture = SDL_CreateTexture(g_sdlRenderer, SDL_PIXELFORMAT_ARGB32, SDL_TEXTUREACCESS_TARGET, 64, 64); //creating own texture 
-
-	//SDL_SetRenderTarget(g_sdlRenderer, MagicTexture); //MAGIC TEXTURE COULD BE USEFUL AS LANDMINES  
+	
 
 	//SDL_SetRenderDrawColor(g_sdlRenderer, 0, 255, 0, 0);
 	SDL_Rect BoxDST = { 16,16,32,32 };
@@ -332,6 +328,23 @@ int main(int argc, char* argv[])
 					//PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
 				}
 			}
+			for (auto& pickup : Pickups->spawnedPickups)
+			{
+				if (Collision::SquareCollision(PlayerTank.boxCollider, pickup->boxCollider))
+				{
+					if (!pickup->isPickedup)
+					{
+						PlayerTank.Ammo += pickup->GetValue();
+						pickup->PickupItem();
+					}
+					else
+					{
+						std::cout << "Already picked up" << std::endl; 
+					}
+					
+					
+				}
+			}
 			
 			//if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			//{
@@ -383,17 +396,8 @@ int main(int argc, char* argv[])
 				{
 					
 					PlayerTank.MoveRight(deltaTime);
-					//sonic.m_x++;
-					if (sonic.animState != 9)
-					{
-						
-						sonic.animState = 9;
-						sonic.animFrames = 4;
-						sonic.animPixelHeight = 64;
-						sonic.animPixelWidth = 64;
-						sonic.animationSpeed = 20;
-
-					}
+					
+					
 					
 				}
 				else if (Input_Manager::GetKey(SDL_SCANCODE_W) || Input_Manager::GetKey(SDL_SCANCODE_UP))
@@ -534,7 +538,7 @@ int main(int argc, char* argv[])
 							break;
 						}
 					}
-					else
+					else 
 					{
 						++bulletIter;
 					}
@@ -570,7 +574,7 @@ int main(int argc, char* argv[])
 			   {
 				   if (Collision::SquareCollision(bullet->boxCollider, enemyTank->boxCollider))
 				   {
-					   enemyTank->TakeDamage(1);
+					   enemyTank->TakeDamage(3);
 					   std::cout << "Enemy Damaged." << std::endl; 
 					   PlayerTank.BulletsToDestroy.push_back(bullet);
 					   bulletIter = PlayerTank.bullets.erase(bulletIter);
@@ -635,7 +639,7 @@ int main(int argc, char* argv[])
 		//sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		Obstacles->DrawObstacles(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY,false, deltaTime);
 		
-
+		Pickups->DrawPickups(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime); 
 		//create destination for where the image will be copied{x,y,w,h} 
 		SDL_Rect destinationRect{ 25,25,16,16 };
 		SDL_Rect destinationRect2{ 50,50,20,20 };
@@ -649,8 +653,9 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDestRect);
 		SDL_RenderCopy(g_sdlRenderer, LevelTexture, NULL, &ScoreDest);
 		Game.RenderTimer(deltaTime, g_font, g_sdlRenderer);
-
-
+		Game.RenderAmmo(g_font, g_sdlRenderer, &PlayerTank);
+		Game.RenderHealth(g_font, g_sdlRenderer, &PlayerTank);
+		Game.RenderPlayerLost(g_font, g_sdlRenderer, &PlayerTank); 
 
 		//update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -669,6 +674,10 @@ int main(int argc, char* argv[])
 	
 	SDL_DestroyTexture(TankTexture);
 	SDL_DestroyTexture(BarrelTexture);
+	SDL_DestroyTexture(explosion);
+	SDL_DestroyTexture(Trees);
+	SDL_DestroyTexture(ChestTexture); 
+	SDL_DestroyTexture(MagicTexture); 
 	//SDL_DestroyTexture(penguinTexture);
 	SDL_DestroyTexture(BulletTexture); 
 	Mix_FreeChunk(coinsSFX);

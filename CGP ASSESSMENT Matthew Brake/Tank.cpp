@@ -35,7 +35,7 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* Sec
 	SetPlayerPosition(200, 200);
 	boxCollider.m_height = 35;
 	boxCollider.m_width = 40;
-	Health = 3;
+	Health = 6;
 	TankState = Alive; 
 	Ammo = 10; 
 	boxCollider.Tag = tag; 
@@ -57,32 +57,48 @@ Tank::Tank(SDL_Texture* baseTexture, SDL_Texture* barrelTexture,SDL_Texture* Sec
 
 float Tank::MoveUp(float deltaTime)
 {
-	Pos.y -= m_speed * deltaTime;
-	//TankPos.y -= m_speed * deltaTime;
-	boxCollider.y = Pos.y;
-	return Pos.y;
-}
+	if (TankState != Dead)
+	{
+		Pos.y -= m_speed * deltaTime;
+		//TankPos.y -= m_speed * deltaTime;
+		boxCollider.y = Pos.y;
+		return Pos.y;
+	}
+	}
+	
 
 float Tank::MoveDown(float deltaTime)
 {
-	Pos.y += m_speed * deltaTime;
-	boxCollider.y = Pos.y;
-	return Pos.y;
+	if (TankState != Dead)
+	{
+		Pos.y += m_speed * deltaTime;
+		boxCollider.y = Pos.y;
+		return Pos.y;
+	}
+	
 }
 
 float Tank::MoveLeft(float deltaTime)
 {
-	Pos.x -= m_speed * deltaTime;
-	boxCollider.x = Pos.x;
-	return Pos.x;
+	if (TankState != Dead)
+	{
+		Pos.x -= m_speed * deltaTime;
+		boxCollider.x = Pos.x;
+		return Pos.x;
+	}
+	
 }
 
 
 float Tank::MoveRight(float deltaTime)
 {
-	Pos.x += m_speed * deltaTime;
-	boxCollider.x = Pos.x;
-	return Pos.x; 
+	if (TankState != Dead)
+	{
+		Pos.x += m_speed * deltaTime;
+		boxCollider.x = Pos.x;
+		return Pos.x;
+	}
+
 }
 
 float Tank::GetXValue() const
@@ -231,6 +247,10 @@ void Tank::TakeDamage(int damage)
 			//explosionObject.Pos.y = Pos.y;
 			std::cout << "TANK Dead. animation playing" << std::endl;
 		}
+		if (TankType == Player)
+		{
+			HasLostGame = true; 
+		}
 		
 	}
 }
@@ -348,6 +368,11 @@ int Tank::GetHealth()
 State Tank::GetTankState()
 {
 	return TankState;
+}
+
+bool Tank::bHasLostGame()
+{
+	return HasLostGame; 
 }
 
 

@@ -34,6 +34,8 @@ GameObject::GameObject(SDL_Texture* texture)
 		 SDL_DestroyTexture(m_texture);
 		 m_texture = nullptr;
 
+		 boxCollider.x = NULL; 
+		 boxCollider.y = NULL; 
 	 }
  }
 

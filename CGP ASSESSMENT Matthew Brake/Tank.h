@@ -45,6 +45,7 @@ public:
 	int GetAmmo();
 	int GetHealth();
 	State GetTankState();
+	bool bHasLostGame(); 
 	//GameObject explosionObject; 
 	float BarrelAngle; 
 	int Health; 
@@ -52,6 +53,7 @@ public:
 	float MinesAmmo; 
 	float coolDown;
 	bool hasFired = false; 
+	bool HasLostGame = false; 
 	std::list<Bullet*> bullets;
 	std::list<Bullet*> BulletsToDestroy; 
 	
