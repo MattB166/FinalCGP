@@ -11,6 +11,7 @@ public:
 	void Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime) override; ///trying to draw bullet 
 	void Destroy();
 	
+	
 private:
 	float bullet_Speed = 10;
 	float damage; 

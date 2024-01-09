@@ -324,6 +324,14 @@ int main(int argc, char* argv[])
 					PlayerTank.TakeDamage(1);
 				}
 			}
+			for (auto& Obstacle : Obstacles->SpawnedObstacles)
+
+			{
+				if (Collision::SquareCollision(PlayerTank.boxCollider, Obstacle->boxCollider))
+				{
+					//PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+				}
+			}
 			
 			//if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			//{
@@ -555,6 +563,7 @@ int main(int argc, char* argv[])
 				}
 				 
 		   }
+		  
 		   else
 		   {
 			   for (Tank* enemyTank : enemyTanks->spawnedTanks)
