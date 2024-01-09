@@ -6,7 +6,7 @@
 
 #include <list>
 #include <vector>
-
+class Obstacle;
 
 enum Controller
 {
@@ -39,7 +39,7 @@ public:
 	void Fire(SDL_Texture* texture);
 	void LayMine(SDL_Texture* texture); 
 	void TakeDamage(int damage); 
-	bool HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank);
+	bool HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const std::vector<Obstacle*>& obstacles);
 	void RotateEnemyBarrelToPlayer(const Tank& playerTank);
 	void DestroyBullets();
 	int GetAmmo();

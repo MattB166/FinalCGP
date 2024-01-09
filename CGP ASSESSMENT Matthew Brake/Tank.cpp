@@ -235,7 +235,7 @@ void Tank::TakeDamage(int damage)
 	}
 }
 
-bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
+bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const std::vector<Obstacle*>& obstacles)
 {
 	
 	
@@ -249,8 +249,10 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 
 		int sx = (playerX < enemyX) ? 1 : -1;
 		int sy = (playerY < enemyY) ? 1 : -1;
+		bool isBlockingLOS = false; 
 
 		int err = dx - dy;
+		bool playerOnSameSide = true; 
 		while (true)
 		{
 			if (playerX == enemyX && playerY == enemyY)
@@ -259,11 +261,32 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 				break;
 
 			}
-			/*for (const Obstacle& obstacle : obstacles)
+			for (const Obstacle* obstacleptr : obstacles)
 			{
+				const Obstacle& obstacle = *obstacleptr;
 				if (obstacle.contains(PlayerTank.Pos.x, PlayerTank.Pos.y))
+				{
+					isBlockingLOS = true;
+					int distanceToObject = std::sqrt(std::pow(obstacle.Pos.x - PlayerTank.Pos.x, 2) + std::pow(obstacle.Pos.y - PlayerTank.Pos.y, 2));
+					if (distanceToObject < 10 && ((sx > 0 && playerX < obstacle.Pos.x) || (sx < 0 && playerX > obstacle.Pos.x)))
+					{
+						playerOnSameSide = false;
+					}
+					std::cout << "LOS Blocked by obstacle at: " << obstacle.Pos.x << " , " << obstacle.Pos.y << std::endl; 
+					break;
+				}
+					//return false;
+			}
+			if (isBlockingLOS)
+			{
+				if (!playerOnSameSide)
+				{
+					std::cout << "Player on other side of obstacle. Unreachable!" << std::endl; 
 					return false;
-			}*/
+				}
+				return false;
+			}
+				
 			int e2 = 2 * err;
 
 			if (e2 > -dy)
@@ -277,11 +300,14 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 				playerY += sy;
 		
 			}
-			return true;
+			
 
 		}
+		std::cout << "LOS Clear" << std::endl; 
+		return true;
 		
-		return false; 
+		
+		//return false; 
 
 	
 	

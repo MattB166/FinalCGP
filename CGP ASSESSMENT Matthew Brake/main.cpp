@@ -471,7 +471,7 @@ int main(int argc, char* argv[])
 		{
 			Tank* enemyTank = enemyTanks->spawnedTanks[i];
 			
-			if (enemyTank->HasLineOfSight(PlayerTank,*enemyTank))
+			if (enemyTank->HasLineOfSight(PlayerTank, *enemyTank, Obstacles->SpawnedObstacles))
 			{
 				//std::cout << "Tank" << i << " has line of sight" << std::endl;
 				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
@@ -505,7 +505,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
-				std::cout << "Tank" << i << "Has No line of sight" << std::endl; 
+				std::cout << "Tank" << i << " Has No line of sight" << std::endl; 
 			}
 		}
 		for (auto& enemyTank : enemyTanks->spawnedTanks)

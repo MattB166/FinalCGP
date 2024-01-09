@@ -18,10 +18,10 @@ Obstacle::~Obstacle()
 Obstacle::Obstacle(SDL_Texture* texture)
 {
 	m_texture = texture;
-	m_w = 30;
+	m_w = 60;
 	m_h = 60;
 	boxCollider.m_height = 60;
-	boxCollider.m_width = 30;
+	boxCollider.m_width = 60;
 
 	srand(static_cast<unsigned int>(std::time(0)));
 
@@ -40,7 +40,7 @@ void Obstacle::SpawnObstacles(int Amount, const EnemyTankSpawner& tankSpawner)
 	for (int i = 0; i < Amount; i++)
 	{
 		bool overlap; 
-		int ObstWidth = 30;
+		int ObstWidth = 60;
 		int ObstHeight = 60; 
 
 		int x;
