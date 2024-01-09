@@ -98,6 +98,10 @@ void EnemyTankSpawner::DrawTanks(SDL_Renderer* renderer, float CameraX, float Ca
 	}
 	
 }
+const std::vector<Tank*>& EnemyTankSpawner::GetSpawnedTanks() const
+{
+	return spawnedTanks; 
+}
 //void EnemyTankSpawner::DestroyKilledTanks()
 //{
 //	for (auto* tank : TanksToDestroy)

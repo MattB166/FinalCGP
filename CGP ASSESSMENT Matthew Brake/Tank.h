@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Bullet.h"
+#include "Obstacle.h"
 #include "SDL_mixer.h"
 
 #include <list>

@@ -1,5 +1,6 @@
 #include "Level.h"
 #include <string>
+#include <ctime>
 
 float Level::WorldX = 800;
 float Level::WorldY = 600;

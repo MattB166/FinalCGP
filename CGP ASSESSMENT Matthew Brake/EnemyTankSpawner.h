@@ -15,6 +15,7 @@ public:
 	~EnemyTankSpawner();
 	void SpawnTank(int amountOfTanks);
 	void DrawTanks(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime);
+	const std::vector<Tank*>& GetSpawnedTanks() const; 
 	//void DestroyKilledTanks();
 	Tank* getTankByIndex(int index) const;          
 	void CheckTankSpawnPos(Tank* tank);    
@@ -24,7 +25,7 @@ public:
 	std::vector<Tank*> TanksToDestroy;
 	void AssignID();
 	
-	///need a tank movement and shooting function 
+	///need a tank movement
 	
 
 

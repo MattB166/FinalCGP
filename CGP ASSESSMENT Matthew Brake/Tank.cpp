@@ -259,6 +259,11 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 				break;
 
 			}
+			/*for (const Obstacle& obstacle : obstacles)
+			{
+				if (obstacle.contains(PlayerTank.Pos.x, PlayerTank.Pos.y))
+					return false;
+			}*/
 			int e2 = 2 * err;
 
 			if (e2 > -dy)
@@ -273,6 +278,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 		
 			}
 			return true;
+
 		}
 		
 		return false; 

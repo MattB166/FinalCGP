@@ -1,12 +1,84 @@
-﻿  main.cpp
+﻿  BoxCollider.cpp
+  Bullet.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(28,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(29,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(32,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Bullet.cpp(61,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Collider.cpp
+  Collision.cpp
+  GameObject.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,26): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,41): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,50): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,54): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\GameObject.cpp(22,54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Input_Manager.cpp
+  Level.cpp
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(11,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Level.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(309,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(310,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(443,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(444,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(506,100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(506,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(288,18): warning C4101: 'MagicHeight': unreferenced local variable
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(288,6): warning C4101: 'MagicWidth': unreferenced local variable
+  main.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(11,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Level.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(312,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(313,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(455,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(456,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(518,100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(518,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(291,18): warning C4101: 'MagicHeight': unreferenced local variable
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(291,6): warning C4101: 'MagicWidth': unreferenced local variable
+  MineBomb.cpp
+  Obstacle.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(34,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(56,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(57,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(69,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(70,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(85,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(85,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(108,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(109,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(114,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Obstacle.cpp(115,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  RigidBody2D.cpp
+  Tank.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(105,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(105,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(106,47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(114,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(115,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,50): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,58): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(116,58): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(146,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(147,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(152,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(153,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(158,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(159,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(242,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(243,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(244,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(245,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(295,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Tank.cpp(315,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  EnemyTankSpawner.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(59,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(60,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(78,79): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\EnemyTankSpawner.cpp(78,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Time.cpp
+  TimeMaths.cpp
+  UI_Manager.cpp
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(11,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
+  Vector2.cpp
+  Generating Code...
   CGP ASSESSMENT Matthew Brake.vcxproj -> C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\x64\Debug\CGP ASSESSMENT Matthew Brake.exe

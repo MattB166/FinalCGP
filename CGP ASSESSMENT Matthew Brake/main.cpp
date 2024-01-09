@@ -13,6 +13,7 @@
 #include "BoxCollider.h"
 #include "TimeMaths.h"
 #include "Input_Manager.h"
+#include "Obstacle.h"
 #include "Level.h"
 
 
@@ -222,7 +223,7 @@ int main(int argc, char* argv[])
 	int TankX = 200;
 	int TankY = 200;*/
 	SDL_Texture* explosion = LoadTexture("Assets/explosion.png");
-	
+	SDL_Texture* Trees = LoadTexture("Assets/tree_12.png");
 
 	Tank PlayerTank(TankTexture,BarrelTexture, explosion, Player, "Player");
 	
@@ -235,7 +236,9 @@ int main(int argc, char* argv[])
 
 	enemyTanks->SpawnTank(3);
 	
-	
+	Obstacle* Obstacles = new Obstacle(Trees);
+
+	Obstacles->SpawnObstacles(10, *enemyTanks);
 	
 	
 	Tank* firstTank = enemyTanks->getTankByIndex(0);
@@ -311,34 +314,43 @@ int main(int argc, char* argv[])
 
 		while (SDL_PollEvent(&sdlEvent))
 		{
+			for (auto& Tank : enemyTanks->spawnedTanks)
+			{
+				if (Collision::SquareCollision(PlayerTank.boxCollider, Tank->boxCollider))
+				{
+					std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
+					std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
+					PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+					PlayerTank.TakeDamage(1);
+				}
+			}
 			
-			
-			if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
-			{
-				std::cout << "Clash With First Tank" << std::endl;
-				std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
-				std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
-				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
-				PlayerTank.TakeDamage(1);
+			//if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
+			//{
+			//	std::cout << "Clash With First Tank" << std::endl;
+			//	std::cout << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl;
+			//	std::cout << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl;
+			//	PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+			//	PlayerTank.TakeDamage(1);
 
-			}
-			else if(Collision::SquareCollision(PlayerTank.boxCollider, secondTank->boxCollider))
-			{
-				std::cout << "Clash With Second Tank" << std::endl;
-				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
-				PlayerTank.TakeDamage(1);
+			//}
+			//else if(Collision::SquareCollision(PlayerTank.boxCollider, secondTank->boxCollider))
+			//{
+			//	std::cout << "Clash With Second Tank" << std::endl;
+			//	PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+			//	PlayerTank.TakeDamage(1);
 
-			}
-			else if (Collision::SquareCollision(PlayerTank.boxCollider, thirdTank->boxCollider))
-			{
-				std::cout << "Clash With Third Tank" << std::endl;
-				PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
-				PlayerTank.TakeDamage(1); 
-			}
-			else
-			{
-				//std::cout << "No Clash" << std::endl; 
-			}
+			//}
+			//else if (Collision::SquareCollision(PlayerTank.boxCollider, thirdTank->boxCollider))
+			//{
+			//	std::cout << "Clash With Third Tank" << std::endl;
+			//	PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
+			//	PlayerTank.TakeDamage(1); 
+			//}
+			//else
+			//{
+			//	//std::cout << "No Clash" << std::endl; 
+			//}
 
 			
 
@@ -448,7 +460,7 @@ int main(int argc, char* argv[])
 		//SDL_SetRenderDrawColor(g_sdlRenderer, 19, 47, 209, 255);   ////sets background colour 
 		SDL_RenderClear(g_sdlRenderer);
 
-
+		
 		PlayerTank.Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, true, deltaTime);
 		PlayerTank.coolDown -= deltaTime; 
 		firstTank->coolDown -= deltaTime;
@@ -459,7 +471,7 @@ int main(int argc, char* argv[])
 		{
 			Tank* enemyTank = enemyTanks->spawnedTanks[i];
 			
-			if (enemyTank->HasLineOfSight(PlayerTank, *enemyTank))
+			if (enemyTank->HasLineOfSight(PlayerTank,*enemyTank))
 			{
 				//std::cout << "Tank" << i << " has line of sight" << std::endl;
 				enemyTank->RotateEnemyBarrelToPlayer(PlayerTank); 
@@ -612,8 +624,8 @@ int main(int argc, char* argv[])
 		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false, deltaTime);
 		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
 		//sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
+		Obstacles->DrawObstacles(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY,false, deltaTime);
 		
-
 
 		//create destination for where the image will be copied{x,y,w,h} 
 		SDL_Rect destinationRect{ 25,25,16,16 };
@@ -653,6 +665,7 @@ int main(int argc, char* argv[])
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);
 	delete(enemyTanks);
+	delete(Obstacles); 
 	
 	
 	cleanup();
