@@ -419,7 +419,7 @@ int main(int argc, char* argv[])
 				}
 				break;
 			case SDL_MOUSEMOTION:
-				std::cout << "Current Mouse Position is: " << sdlEvent.motion.x << " , " << sdlEvent.motion.y << std::endl;
+				//std::cout << "Current Mouse Position is: " << sdlEvent.motion.x << " , " << sdlEvent.motion.y << std::endl;
 
 				SDL_GetMouseState(&MouseX, &MouseY);
 				MagicX = sdlEvent.motion.x; //locks magicx to mousex position
@@ -487,7 +487,7 @@ int main(int argc, char* argv[])
 				}
 				else
 				{
-					std::cout << "Tank in Cooldown/JustFired" << std::endl; 
+					//std::cout << "Tank in Cooldown/JustFired" << std::endl; 
 				}
 				
 			}

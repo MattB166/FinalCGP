@@ -51,7 +51,7 @@ void Bullet::Fire(float TurretAngle, float TurretX, float TurretY)
 
 void Bullet::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int MouseX, int MouseY, bool isPlayer, float deltaTime)
 {
-	std::cout << "DRAWING BULLET" << std::endl; 
+	//std::cout << "DRAWING BULLET" << std::endl; 
 	Pos.x += rb.velocity.x * deltaTime; 
 	Pos.y += rb.velocity.y * deltaTime;
 	boxCollider.x = Pos.x;

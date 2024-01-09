@@ -255,7 +255,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 		{
 			if (playerX == enemyX && playerY == enemyY)
 			{
-				//std::cout << "SAME POS. BREAKING" << std::endl; 
+				std::cout << "SAME POS. BREAKING" << std::endl; 
 				break;
 
 			}
@@ -272,9 +272,10 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank)
 				playerY += sy;
 		
 			}
+			return true;
 		}
-		//std::cout << "End of checks" << std::endl; 
-		return true;
+		
+		return false; 
 
 	
 	
