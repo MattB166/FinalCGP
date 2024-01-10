@@ -277,7 +277,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const s
 		{
 			if (playerX == enemyX && playerY == enemyY)
 			{
-				std::cout << "SAME POS. BREAKING" << std::endl; 
+				//std::cout << "SAME POS. BREAKING" << std::endl; 
 				break;
 
 			}
@@ -292,7 +292,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const s
 					{
 						playerOnSameSide = false;
 					}
-					std::cout << "LOS Blocked by obstacle at: " << obstacle.Pos.x << " , " << obstacle.Pos.y << std::endl; 
+					//std::cout << "LOS Blocked by obstacle at: " << obstacle.Pos.x << " , " << obstacle.Pos.y << std::endl; 
 					break;
 				}
 					//return false;
@@ -301,7 +301,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const s
 			{
 				if (!playerOnSameSide)
 				{
-					std::cout << "Player on other side of obstacle. Unreachable!" << std::endl; 
+					//std::cout << "Player on other side of obstacle. Unreachable!" << std::endl; 
 					return false;
 				}
 				return false;
@@ -323,7 +323,7 @@ bool Tank::HasLineOfSight(const Tank& PlayerTank, const Tank& enemyTank, const s
 			
 
 		}
-		std::cout << "LOS Clear" << std::endl; 
+		//std::cout << "LOS Clear" << std::endl; 
 		return true;
 		
 		

@@ -1,8 +1,8 @@
 ﻿  main.cpp
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\UI_Manager.h(11,2): warning C4091: 'static ': ignored on left of 'UI_Manager' when no variable is declared
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\Level.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(309,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(310,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(311,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(469,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(470,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Matth\Documents\UNI WORK\Actual Year 2\CGP\FinalCGP\CGP ASSESSMENT Matthew Brake\main.cpp(535,100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data

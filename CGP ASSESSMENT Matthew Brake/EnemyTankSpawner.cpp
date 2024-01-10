@@ -77,6 +77,7 @@ void EnemyTankSpawner::SpawnTank(int amountOfTanks)
 		spawnedTanks[i]->SetEnemyPosition(x, y); //testing various positions 
 		spawnedTanks[i]->SetColliderPos(spawnedTanks[i]->Pos.x, spawnedTanks[i]->Pos.y);
 		spawnedTanks[i]->Ammo = 10; 
+	
 		
 		///want a way to check their positions so do not spawn on each other 
 		///check spawn pos doesnt clash with another tank 

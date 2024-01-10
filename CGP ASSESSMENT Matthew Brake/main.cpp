@@ -292,8 +292,8 @@ int main(int argc, char* argv[])
 
 	
 
-	std::cout << "Player box collider at: " << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
-	std::cout << "Enemy Box Collider is at: " << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl; 
+	//std::cout << "Player box collider at: " << PlayerTank.boxCollider.x << " , " << PlayerTank.boxCollider.y << std::endl; 
+	//std::cout << "Enemy Box Collider is at: " << firstTank->boxCollider.x << " , " << firstTank->boxCollider.y << std::endl; 
 	
 	int MouseX = 0;
 	int MouseY = 0;
@@ -303,7 +303,6 @@ int main(int argc, char* argv[])
 	{
 		TimeMaths& TimeMathInstance = TimeMaths::getInstance();
 		float deltaTime = TimeMathInstance.getDeltaTime();
-		
 		
 		SDL_Event sdlEvent;   //logs event queue  
 		Input_Manager::UpdateKeyStates();
@@ -442,6 +441,7 @@ int main(int argc, char* argv[])
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
 					PlayerTank.Fire(BulletTexture);
+					//std::cout << "Pressing Fire" << std::endl; 
 				}
 				break;
 			case SDL_MOUSEMOTION:
@@ -522,7 +522,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
-				std::cout << "Tank" << i << " Has No line of sight" << std::endl; 
+				//std::cout << "Tank" << i << " Has No line of sight" << std::endl; 
 			}
 		}
 		for (auto& enemyTank : enemyTanks->spawnedTanks)
@@ -546,7 +546,7 @@ int main(int argc, char* argv[])
 					if (Collision::SquareCollision(bullet->boxCollider, PlayerTank.boxCollider))
 					{
 						PlayerTank.TakeDamage(1);
-						std::cout << "Player damaged" << std::endl; 
+						//std::cout << "Player damaged" << std::endl; 
 						enemyTank->BulletsToDestroy.push_back(bullet);
 						bulletIter = enemyTank->bullets.erase(bulletIter); 
 						bulletHitTank = true;
@@ -588,7 +588,7 @@ int main(int argc, char* argv[])
 			   {
 				   if (Collision::SquareCollision(bullet->boxCollider, enemyTank->boxCollider))
 				   {
-					   enemyTank->TakeDamage(3);
+					   enemyTank->TakeDamage(2);
 					   std::cout << "Enemy Damaged." << std::endl; 
 					   PlayerTank.BulletsToDestroy.push_back(bullet);
 					   bulletIter = PlayerTank.bullets.erase(bulletIter);
@@ -634,6 +634,10 @@ int main(int argc, char* argv[])
 		Game.RenderAmmo(g_font, g_sdlRenderer, &PlayerTank);
 		Game.RenderHealth(g_font, g_sdlRenderer, &PlayerTank);
 		Game.RenderPlayerLost(g_font, g_sdlRenderer, &PlayerTank); 
+		if (Game.Gameover)
+		{
+			PlayerTank.Health = 0; 
+		}
 
 		//update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -656,7 +660,6 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(Trees);
 	SDL_DestroyTexture(ChestTexture); 
 	SDL_DestroyTexture(MagicTexture); 
-	//SDL_DestroyTexture(penguinTexture);
 	SDL_DestroyTexture(BulletTexture); 
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(music);

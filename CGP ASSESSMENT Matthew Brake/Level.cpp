@@ -140,7 +140,7 @@ void Level::CheckPlayerBounds(Tank* tank)
 		tank->Pos.x = WorldX - tank->m_w;
 	}
 	
-	if (tank->Pos.x <= 0)
+	if (tank->Pos.y <= 0)
 	{
 		tank->Pos.y = 0;
 	}
