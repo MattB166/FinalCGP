@@ -308,6 +308,7 @@ int main(int argc, char* argv[])
 		Input_Manager::UpdateKeyStates();
 		int prevPlayerX = PlayerTank.GetXValue();
 		int prevPlayerY = PlayerTank.GetYValue();
+		
 
 		while (SDL_PollEvent(&sdlEvent))
 		{
@@ -320,6 +321,7 @@ int main(int argc, char* argv[])
 					PlayerTank.SetPlayerPosition(prevPlayerX, prevPlayerY);
 					PlayerTank.TakeDamage(1);
 				}
+				
 			}
 			for (auto& Obstacle : Obstacles->SpawnedObstacles)
 
@@ -346,6 +348,7 @@ int main(int argc, char* argv[])
 					
 				}
 			}
+
 			
 			//if (Collision::SquareCollision(PlayerTank.boxCollider, firstTank->boxCollider))
 			//{
@@ -482,7 +485,7 @@ int main(int argc, char* argv[])
 		thirdTank->coolDown -= deltaTime; 
 		fourthTank->coolDown -= deltaTime; 
 		fifthTank->coolDown -= deltaTime; 
-
+		
 		
 		for (int i = 0; i < enemyTanks->spawnedTanks.size(); i++)
 		{
@@ -524,6 +527,7 @@ int main(int argc, char* argv[])
 			{
 				//std::cout << "Tank" << i << " Has No line of sight" << std::endl; 
 			}
+			
 		}
 		for (auto& enemyTank : enemyTanks->spawnedTanks)
 		{
