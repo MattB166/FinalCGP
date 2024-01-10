@@ -242,6 +242,8 @@ int main(int argc, char* argv[])
 	Tank* firstTank = enemyTanks->getTankByIndex(0);
 	Tank* secondTank = enemyTanks->getTankByIndex(1);
 	Tank* thirdTank = enemyTanks->getTankByIndex(2);
+	Tank* fourthTank = enemyTanks->getTankByIndex(3);
+	Tank* fifthTank = enemyTanks->getTankByIndex(4); 
 	//firstTank->SetColliderPos(firstTank->m_x, firstTank->m_y);
 	
 	//if (Collision::CircleCollision(2, 3, 1, 3, 2, 0.5f))   //testing circle collision 
@@ -478,6 +480,9 @@ int main(int argc, char* argv[])
 		firstTank->coolDown -= deltaTime;
 		secondTank->coolDown -= deltaTime;
 		thirdTank->coolDown -= deltaTime; 
+		fourthTank->coolDown -= deltaTime; 
+		fifthTank->coolDown -= deltaTime; 
+
 		
 		for (int i = 0; i < enemyTanks->spawnedTanks.size(); i++)
 		{
@@ -538,6 +543,15 @@ int main(int argc, char* argv[])
 							break;
 						}
 					}
+					if (Collision::SquareCollision(bullet->boxCollider, PlayerTank.boxCollider))
+					{
+						PlayerTank.TakeDamage(1);
+						std::cout << "Player damaged" << std::endl; 
+						enemyTank->BulletsToDestroy.push_back(bullet);
+						bulletIter = enemyTank->bullets.erase(bulletIter); 
+						bulletHitTank = true;
+						break;
+					}
 					else 
 					{
 						++bulletIter;
@@ -592,51 +606,15 @@ int main(int argc, char* argv[])
 			
 		   
 		   
-		   /*else if (Collision::SquareCollision(bullet->boxCollider, firstTank->boxCollider))
-			{
-				std::cout << "Bullet Hit first tank. Damage Dealt" << std::endl;
-				firstTank->TakeDamage(1);
-				PlayerTank.BulletsToDestroy.push_back(bullet);
-				bulletIter = PlayerTank.bullets.erase(bulletIter); 
-				std::cout << "First Tank Health is now: " << firstTank->Health << std::endl; 
-				if (firstTank->GetTankState() == Dead)
-				{
-					std::cout << "Tank Destroyed!" << std::endl;
-					
-					++Game.score;
-				}
-			}
-			else
-			{
-				++bulletIter;
-			}*/
 		}
 		PlayerTank.DestroyBullets();
 		firstTank->DestroyBullets();
 		secondTank->DestroyBullets();
 		thirdTank->DestroyBullets(); 
-		//enemyTanks->DestroyKilledTanks();
-
 		
-		//for (auto* bullet : PlayerTank.bullets)
-		//{
-		//	bullet->Draw(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime);
-		//	
-		//}
-		//for (auto* bullet : PlayerTank.bullets)
-		//{
-		//	if (Game.CheckBulletBounds(bullet))
-		//	{
-		//		PlayerTank.bullets.remove(bullet);                           ////////working on this. trying to delete bullets which have left view 
-		//		PlayerTank.BulletsToDestroy.push_back(bullet);
-		//		
-		//	}
-		//}
-		//PlayerTank.DestroyBullets();
 		
 		enemyTanks->DrawTanks(g_sdlRenderer, g_cameraX, g_cameraY,MouseX,MouseY,false, deltaTime);
-		//sonic.Draw(g_sdlRenderer, g_cameraX, g_cameraY);
-		//sonic.timeInAnimationState = SDL_GetTicks() / 1000.0f;
+		
 		Obstacles->DrawObstacles(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY,false, deltaTime);
 		
 		Pickups->DrawPickups(g_sdlRenderer, g_cameraX, g_cameraY, MouseX, MouseY, false, deltaTime); 

@@ -62,7 +62,7 @@ void Bullet::Draw(SDL_Renderer* renderer, float CameraX, float CameraY, int Mous
 	
 	
 	
-	//// bullets spawn and fire but not aligned with barrel rotation 
+	
 }
 
 void Bullet::Destroy()
